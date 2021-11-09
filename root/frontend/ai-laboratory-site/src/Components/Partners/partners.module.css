@@ -1,26 +1,27 @@
-.footer {
-    background-color: #010101;
-    height: 155px;
+.partners {
     display: flex;
     align-items: center;
     justify-content: center;
+    max-height: 155px;
+    background-color: #fff;
+    padding: 20px;
+
 }
 
-.footer p {
-    color: #fff;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 27px;
-    letter-spacing: -0.04em;
+.partners .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 155px;
+
+    /*border: 1px solid red;*/
 }
 
-.footer p:hover {
-    color: #ffffffb5;
-    border-color: #ffffffb5;
+.partners .container img {
+    max-height: 83px;
+    margin-right: 8px;
 }
 
-.footer p:active {
-    color: #3d40afc7;
-    border-color: #3d40afc7;
+.partners .container img:last-child {
+    margin-right: 0;
 }

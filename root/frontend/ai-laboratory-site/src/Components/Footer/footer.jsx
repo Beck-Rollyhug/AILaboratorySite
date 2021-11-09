@@ -5,7 +5,6 @@ const Footer = () => {
   return(
       <footer className={n.footer}>
           <p>Техподдержка</p>
-
       </footer>
   );
 }

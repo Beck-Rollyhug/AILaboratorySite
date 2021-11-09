@@ -1,32 +1,32 @@
 import React from "react";
-import '../../App.css';
+import n from "./information.module.css"
+import Card from "./Card/card";
+import {BrowserRouter} from "react-router-dom";
+
+//Пока нет БД можно)
+let a = "Промышленные роботы";
+let b = "NPC в играх";
+let c = "Исследования и эксперименты в биологии";
+let d = "тест";
+
 
 const Information = () => {
   return(
-      <section id="section02" className="information">
-          <div className="container">
-              <div className="directions">
+
+      <section id="section02" className={n.information}>
+          <div className={n.container}>
+              <div className={n.directions}>
                   <h1>Чем мы занимаемся?</h1>
-                  <ul className="activity">
-                      <li>Промышленные роботы (сделать ховеры)</li>
-                      <li>NPC в играх</li>
-                      <li>Исследования и эксперименты в биологии</li>
+                  <ul className={n.activity}>
+                      <li >{a}</li>
+                      <li >{b}</li>
+                      <li >{c}</li>
                   </ul>
-                  <div className="btn"><a href="#">Подробнее</a></div>
+
+                  <div className={n.btn}><a href="#">Подробнее</a></div>
               </div>
-              {/*<div class="card">
-                        <img class="card-img"/>
-                        <img src="img/robot_original.jpg" class="card-img-top" alt="Роботы"/>
-                        <div class="card-body">
-                            <h1>Промышленные роботы</h1>
-                            <p>Аропор попртмит пвапыава враоплр олрдлр епопроаоаопроаророа поралавпвяыапф ыапыавпы аврапв пывапвыпыва пывапавыпы авпыавпыавпыпапавы пыавпвапыр прпрпрваы.
-                                Аропор попртмит пвапыава враоплр олрдлр епопроаоаопроаророа поралавпвяыапф ыапыавпы аврапв пывапвыпыва пывапавыпы авпыавпыавпыпапавы пыавпвапыр прпрпрваы.
-                                Аропор попртмит пвапыава враоплр олрдлр епопроаоаопроаророа поралавпвяыапф ыапыавпы аврапв пывапвыпыва пывапавыпы авпыавпыавпыпапавы пыавпвапыр прпрпрваы.
-                                Аропор попртмит пвапыава враоплр олрдлр епопроаоаопроаророа поралавпвяыапф ыапыавпы аврапв пывапвыпыва пывапавыпы авпыавпыавпыпапавы пыавпвапыр прпрпрваы.
-                               </p>
-                        </div>
-                </div>*/}
           </div>
+          <Card />
       </section>
   );
 }

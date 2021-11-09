@@ -5,6 +5,7 @@ import Header from "./Components/Header/header";
 import Information from "./Components/Information/information";
 import Partners from "./Components/Partners/partners";
 
+
 function App() {
   return (
     <div className="App">

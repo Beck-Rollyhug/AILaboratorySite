@@ -125,3 +125,50 @@ p {
     transform: rotate(-23.5deg);
 }
 
+nav {
+    height:50px;
+    width:100%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+}
+
+.burgerBtn{
+    width: 30px;
+    height: 30px;
+    margin-left: 20px;
+    position: relative;
+    cursor: pointer;
+}
+
+
+/*.burgerBtn:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 30px;
+    background-color: white;
+    height: 3px;
+}*/
+
+.burgerBtn span{
+    display: inline-block;
+    width: 2.5em;
+    height: 2.5em;
+    vertical-align: middle;
+    background-image: url("../../img/burger-menu.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    background-color: transparent;
+}
+
+/*
+.burgerBtn:after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 30px;
+    background-color: white;
+    height: 3px;
+}*/

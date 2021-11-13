@@ -1,15 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
 import n from "./header.module.css"
-import Burger from "./BurgerMenu/burgerMenu";
+import Menu from "./BurgerMenu/Menu";
 
 const Header = () => {
-  return(
+  const [menuActive, setMenuActive] = useState(false)
+    const items = [{value: "Главная", href: "/main", icon: 1},{value: "Главная", href: "/main", icon: 1},{value: "Главная", href: "/main", icon: 1}]
+    
+
+    return(
       <header className={n.mainTitle}>
           <div className={n.container}>
-              <div className={n.menuTop}>
-                  <Burger/>
 
-                  <nav></nav>
+              <div className={n.menuTop}>
+                  <nav>
+                      <div className={n.burgerBtn} onClick={() => setMenuActive(!menuActive)}>
+                          <span/>
+                      </div>
+                  </nav>
                   <div className={n.title}>
                       <h2>Хочу всё понять.</h2>
                       <p>эта идея создаёт ученых</p>
@@ -24,6 +31,7 @@ const Header = () => {
                   <div className={n.right}></div>
               </a>
           </div>
+          <Menu active={menuActive} setActive={setMenuActive} header={"Бургер меню"} items={items}/>
       </header>
   );
 }

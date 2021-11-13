@@ -8,7 +8,10 @@
     border: 1px solid transparent;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    width: 67%;
+    margin: 0 auto;
+    padding: 0 5px;
 
 }
 
@@ -41,13 +44,6 @@
     transform: rotate(-23.5deg);
 }
 
-.directions,
-.card {
-    flex: 0 auto;
-    flex-direction: row;
-    align-self: flex-start;
-}
-
 .directions {
     max-width: 440px;
     margin-top: 5.3rem;
@@ -63,11 +59,14 @@
     margin-top: 0;
 }
 
+
 .activity {
     margin-bottom: 320px;
+
 }
 
 .activity li {
+    display: flex;
     font-style: normal;
     font-weight: 600;
     font-size: 18px;

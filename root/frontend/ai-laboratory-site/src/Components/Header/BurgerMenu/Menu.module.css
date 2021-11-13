@@ -63,7 +63,6 @@ ul li a{
     color: white;
     text-decoration: none;
     font-size: 1.3rem;
-    margin-top: 10px;
 }
 
 ul{
@@ -76,6 +75,9 @@ ul{
 ul li{
     display: flex;
     align-items: center;
+    flex-direction: column-reverse;
+    margin-top: 20px;
+
 }
 
 ul{

@@ -13,6 +13,7 @@ const Menu = ({header, items, active, setActive}) => {
                     <li>
                         <a href={item.href}>{item.value}</a>
                         <span className={n.icons}>{item.icon}</span>
+                        {/*<span>{item.icon}</span>*/}
                     </li>
                     ))}
                 </ul>

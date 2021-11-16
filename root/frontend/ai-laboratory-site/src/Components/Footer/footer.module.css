@@ -1,0 +1,26 @@
+.footer {
+    background-color: #010101;
+    height: 155px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer p {
+    color: #fff;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    letter-spacing: -0.04em;
+}
+
+.footer p:hover {
+    color: #ffffffb5;
+    border-color: #ffffffb5;
+}
+
+.footer p:active {
+    color: #3d40afc7;
+    border-color: #3d40afc7;
+}

@@ -16,21 +16,23 @@ let d = "тест";
 
 const Information = () => {
   return(
+      <div className={n.color}>
+          <section id="section02" className={n.information}>
 
-      <section id="section02" className={n.information}>
-          <div className={n.container}>
-              <div className={n.directions}>
-                  <h1>Чем мы занимаемся?</h1>
-                  <ul className={n.activity}>
-                      <li >{a}</li>
-                      <li >{b}</li>
-                      <li >{c}</li>
-                  </ul>
-                  <div className={n.btn}><a href="#">Подробнее</a></div>
+              <div className={n.container}>
+                  <div className={n.directions}>
+                      <h1>Чем мы занимаемся?</h1>
+                      <ul className={n.activity}>
+                          <li >{a}</li>
+                          <li >{b}</li>
+                          <li >{c}</li>
+                      </ul>
+                      <div className={n.btn}><a href="#">Подробнее</a></div>
+                  </div>
               </div>
-          </div>
-          <Card name="Роботы" text="Много роботов Много роботов Много роботов Много роботов Много роботов" img={Robot}/>
-      </section>
+              <Card name="Роботы" text="Много роботов Много роботов Много роботов Много роботов Много роботов" img={Robot}/>
+          </section>
+      </div>
   );
 }
 

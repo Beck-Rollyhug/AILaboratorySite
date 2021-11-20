@@ -1,11 +1,12 @@
 from Database.database import Database
 
+
 class Users(Database):
 
     def add(self, user):
         data = user.get_data()
-        fields_name = ", ".join(data.keys())
-        fields_val = ", ".join(data.values())
+        fields_name = '"' + '", "'.join(data.keys()) + '"'
+        fields_val = "'" + "', '".join(data.values()) + "'"
         query = """
             INSERT INTO public."Users"({fields_name})
                 VALUES ({fields_val});
@@ -13,12 +14,14 @@ class Users(Database):
         return self._execute(query)
 
     def find(self, user):
-        fltr = " and ".join([f"{k}='{v}'"for k, v in user.get_data().items()])
+        fltr = " and ".join([f"\"{k}\"='{v}'"for k, v in user.get_data().items()])
         query = f"""
         select * from "Users"
-        where 
-        """ + fltr
-        return self._execute(query, wait_res=True)
+        where {fltr}
+        LIMIT 1
+        """
+        res = self._execute(query, wait_res=True)[0]
+        return User(*res)
 
 class User:
     def __init__(self, id=None, email=None, password=None, full_name=None, university=None,
@@ -38,4 +41,4 @@ class User:
 
     def get_data(self):
         data = self.__dict__
-        return {k:v for k, v in data.items() if v}
+        return {k: v for k, v in data.items() if v}

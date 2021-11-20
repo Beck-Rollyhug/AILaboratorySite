@@ -1,13 +1,4 @@
 from Database.Users import *
+from backend_server import start_server
 
-d = Users()
-print(d.find(User(id=1)))
-
-
-
-
-
-
-
-
-Database().exit()
+start_server()

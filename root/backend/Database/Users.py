@@ -14,14 +14,17 @@ class Users(Database):
         return self._execute(query)
 
     def find(self, user):
-        fltr = " and ".join([f"\"{k}\"='{v}'"for k, v in user.get_data().items()])
+        fltr = " and ".join([f"\"{k}\"='{v}'" for k, v in user.get_data().items()])
         query = f"""
         select * from "Users"
         where {fltr}
         LIMIT 1
         """
-        res = self._execute(query, wait_res=True)[0]
-        return User(*res)
+        if self._execute(query, wait_res=True):
+            res = self._execute(query, wait_res=True)[0]
+            return User(*res)
+        return User()
+
 
 class User:
     def __init__(self, id=None, email=None, password=None, full_name=None, university=None,

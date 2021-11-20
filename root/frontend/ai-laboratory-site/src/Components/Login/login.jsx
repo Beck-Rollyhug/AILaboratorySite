@@ -34,10 +34,10 @@ const Login = () => {
         <div className={style.centered}>
             <h1>Login</h1>
             <div>
-                <input id: 'email' type='text'/>
+                <input id='email' type='text'/>
             </div>
             <div>
-                <input id: 'pass' type='text'/>
+                <input id='pass' type='text'/>
             </div>
             <div>
                 <button onClick={getAccount()}>Войти</button>

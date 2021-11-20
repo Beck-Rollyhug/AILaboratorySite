@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import style from "./reg.module.css"
-import Login from "../Login/login"
 import {Link} from "react-router-dom";
 
 
@@ -20,7 +19,7 @@ const Reg = () => {
             </div>
 
             <div className={style.centered}>
-                <Link to="/login">Войти</Link>
+                <Link to="/api/login">Войти</Link>
             </div>
         </div>
     )

@@ -1,18 +1,30 @@
-import React, {useState} from "react";
+import React from "react";
 import style from "./login.module.css"
 import {Link} from "react-router-dom";
-import * as Console from "console";
 
 
+class Login extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: '',
+            pass: ''
+        };
 
-const Login = () => {
+        this.handleChange = this.handleChange.bind(this);
+    }
 
-    const email = ''
-    document.getElementById('email').value = email
-    const pass = ''
-    document.getElementById('pass').value = pass
+    handleChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+        console.log(this.state.email)
+    }
 
-    const getAccount = () => {
+    getAccount = (props) => {
+        const email = this.state.email;
+        const pass = this.state.pass;
+        console.log(email, pass);
         fetch("http://localhost:3000/api/login",
             {
                 method: 'POST',
@@ -26,28 +38,33 @@ const Login = () => {
             })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data.status);
+                console.log('ok', data);
             })
     }
 
+
+    render() {
     return (
         <div className={style.centered}>
+            <p>
+                {this.state.email}
+            </p>
             <h1>Login</h1>
-            <div>
-                <input id='email' type='text'/>
-            </div>
-            <div>
-                <input id='pass' type='text'/>
-            </div>
-            <div>
-                <button onClick={getAccount()}>Войти</button>
-            </div>
+            <form>
+                <label>
+                    Почта:
+                    <input name='email' type='text' value={this.state.email} onChange={this.handleChange}/>
+                </label>
+
+                <input name='pass' type='text' value={this.state.pass} onChange={this.handleChange}/>
+                <input type='submit' value='Войти' onSubmit={this.getAccount}/>
+            </form>
 
             <div className={style.centered}>
-                <Link to="/api/reg">Создать новый аккаунт</Link>
+                <Link to="/reg">Создать новый аккаунт</Link>
             </div>
         </div>
     )
-}
+}}
 
 export default Login;

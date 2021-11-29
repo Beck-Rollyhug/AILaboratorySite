@@ -1,3 +1,213 @@
+
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+.formSignin {
+
+    width: 100%;
+    max-width: 368px;
+    margin: auto;
+    padding-top: 210px;
+}
+
+form {
+    text-align: center;
+}
+
+.logoMenu {
+    margin-bottom: 10px;
+
+}
+
+.title {
+    font-family: Open Sans, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 25px;
+    text-align: center;
+    letter-spacing: -0.04em;
+
+    color: #4A83B8;
+
+    margin-bottom: 20px;
+}
+
+.formFloating {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    letter-spacing: -0.04em;
+    font-feature-settings: 'kern' off;
+    color: #8E8E8E;
+
+
+}
+
+input[type="email"] {
+    margin-bottom: 15px;
+}
+
+.formFloating .formСontrol {
+    background: #EAEAEA;
+    border-radius: 10px;
+}
+
+.btnn {
+    width: 174px;
+    padding: 12px 0;
+    background: #4A83B8;
+    color: #fff;
+    border-radius: 10px;
+    border: none;
+    margin-top: 23px;
+    margin-bottom: 23px;
+}
+
+.btnn:hover {
+    background: #3774b0;
+    color: rgba(255, 255, 255, 0.91);
+}
+
+.btnn:active {
+    background: #355e9b;
+    color: rgba(255, 255, 255, 0.94);
+}
+
+.linkReg {
+    text-decoration: none;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    text-align: center;
+    color: #4A83B8;
+    display: flex;
+    justify-content: center;
+}
+
+.linkReg:hover {
+    text-decoration: underline;
+}
+
+.linkReg:active {
+    color: #296194;
+    text-decoration: none;
+}
+
+.body {
+    display: flex;
+    align-items: center;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+.formSignin {
+    width: 100%;
+    max-width: 368px;
+    margin: auto;
+    padding-top: 210px;
+}
+
+form {
+    text-align: center;
+}
+
+.logoMenu {
+    margin-bottom: 10px;
+
+}
+
+.title {
+    font-family: Open Sans, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 25px;
+    text-align: center;
+    letter-spacing: -0.04em;
+
+    color: #4A83B8;
+
+    margin-bottom: 20px;
+}
+
+.formFloating {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    letter-spacing: -0.04em;
+    font-feature-settings: 'kern' off;
+    color: #8E8E8E;
+    margin-top: 20px;
+
+
+}
+
+input[type="email"] {
+    margin-bottom: 15px;
+}
+
+.formFloating .formControl {
+    background: #EAEAEA;
+    border-radius: 10px;
+}
+
+.btnn {
+    width: 174px;
+    padding: 12px 0;
+    background: #4A83B8;
+    color: #fff;
+    border-radius: 10px;
+    border: none;
+    margin-top: 23px;
+    margin-bottom: 23px;
+}
+
+.btnn:hover {
+    background: #3774b0;
+    color: rgba(255, 255, 255, 0.91);
+}
+
+.btnn:active {
+    background: #355e9b;
+    color: rgba(255, 255, 255, 0.94);
+}
+
+.linkReg {
+    text-decoration: none;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    text-align: center;
+    color: #4A83B8;
+    display: flex;
+    justify-content: center;
+}
+
+.linkReg:hover {
+    text-decoration: underline;
+}
+
+.linkReg:active {
+    color: #296194;
+    text-decoration: none;
+}
+
+
+
+
 body {
     min-width: 1000px;
     font-family: 'Open Sans', Roboto, Arial, sans-serif;
@@ -16,3 +226,4 @@ body {
 button {
     margin: 10px;
 }
+

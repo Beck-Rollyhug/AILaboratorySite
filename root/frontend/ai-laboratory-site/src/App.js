@@ -30,6 +30,18 @@ function App() {
           </div>
       </BrowserRouter>
   );
+function App (props) {
+    return (
+        <BrowserRouter>
+            <div className="App">
+                <Routes>
+                    {/*<Route path="/" element={<Landing />} />*/}
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/reg" element={<Reg />} />
+                </Routes>
+            </div>
+        </BrowserRouter>
+    );
 }
 
 export default App;

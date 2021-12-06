@@ -11,8 +11,8 @@ function App (props) {
         <BrowserRouter>
             <div className="App">
                 <Routes>
-                    {/*<Route path="/" element={<Landing />} />*/}
-                    <Route path="/login" element={<Login />} />
+                    <Route path="/" element={<Login states={props.states}/>} />
+                    <Route path="/login" element={<Login states={props.states}/>} />
                     <Route path="/reg" element={<Reg />} />
                 </Routes>
             </div>

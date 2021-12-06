@@ -92,6 +92,7 @@ p {
 input[type="checkbox"] {
     background: #C9C9C9;
     border: none;
+    width: 20px;
 }
 
 .formCheckLabel {

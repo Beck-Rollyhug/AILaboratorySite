@@ -1,6 +1,5 @@
 import React from "react";
 import n from "./settingsProfileForm.module.css";
-import ProfileHeader from "../../Profile/ProfileHeader/profileHeader";
 import classNames from 'classnames';
 
 const SettingsProfileForm = () => {
@@ -14,7 +13,7 @@ const SettingsProfileForm = () => {
               </div>
               <div className={n.formCheck}>
                   <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-                      <label className={n.formCheckLabel}htmlFor="flexCheckDefault">
+                      <label className={n.formCheckLabel} htmlFor="flexCheckDefault">
                           Я сейчас учусь
                       </label>
               </div>

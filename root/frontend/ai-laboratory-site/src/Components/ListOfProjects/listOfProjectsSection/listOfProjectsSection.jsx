@@ -5,14 +5,14 @@ import classNames from "classnames";
 
 const ListOfProjectsSection= () => {
     return(
-        <section className={n.mainMenu}>
+        <section className="main-menu">
             <div className={n.containerMenu}>
-                <div className={n.searching}>
+                <div className="searching">
                     <div className={n.searchBar}>
                         <button className={classNames(n.navbarToggler, n.ololo)} type="button" data-bs-toggle="collapse"
                                 data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="true"
                                 aria-label="Toggle navigation">
-                            <span className={n.navbarTogglerIcon}></span>
+                            {/*<span className={n.navbarTogglerIcon}></span>*/}
                         </button>
 
 
@@ -31,7 +31,7 @@ const ListOfProjectsSection= () => {
                     </div>
                 </div>
                 {/*Сделай компоненту из этого!!!*/}
-                <div className={n.projectsPanel}>
+                <div className="projects-panel">
                     <div className={n.project}>
                         <a href="#">
                             <h2>Разработка динамической карты погоды на 3D-модели Земли</h2>

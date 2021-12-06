@@ -53,6 +53,7 @@ p {
     letter-spacing: -0.065em;
     margin-bottom: 0;
     margin-top: 0;
+    color: white;
 }
 
 .title p {
@@ -87,12 +88,7 @@ p {
     justify-content: center;
     width: 100%;
     height: 100%;
-    /*height: 24px;
-    margin-left: -12px;
-    border-left: 1px solid #fff;
-    border-bottom: 1px solid #fff;
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);*/
+
 }
 
 .scroll .left {
@@ -148,16 +144,6 @@ nav {
     background-size: 100%;
     background-color: transparent;
 }
-
-/*
-.burgerBtn:after{
-    content: '';
-    position: absolute;
-    bottom: 0;
-    width: 30px;
-    background-color: white;
-    height: 3px;
-}*/
 
 
 

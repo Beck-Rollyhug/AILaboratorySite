@@ -1,10 +1,6 @@
-
-import React, {useState} from "react";
 import n from "./login.module.css"
 import {Link} from "react-router-dom";
 import iisLogo from "../../img/IIS logo.png"
-import ComponentsHeader from "./componentsHeader";
-
 
 const Login = () => {
     return (
@@ -31,11 +27,12 @@ const Login = () => {
     )
 }
 
-import React from "react";
+/*import React from "react";
 import style from "./login.module.css"
-import {Link} from "react-router-dom";
+import {Link} from "react-router-dom";*/
 
 
+/*
 class Login extends React.Component {
     constructor(props) {
         super(props);
@@ -99,6 +96,7 @@ class Login extends React.Component {
         </div>
     )
 }}
+*/
 
 
 export default Login;

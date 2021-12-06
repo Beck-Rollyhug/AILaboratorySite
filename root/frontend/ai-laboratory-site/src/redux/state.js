@@ -1,0 +1,4 @@
+let states = {
+    email: "",
+    pass: ""
+}

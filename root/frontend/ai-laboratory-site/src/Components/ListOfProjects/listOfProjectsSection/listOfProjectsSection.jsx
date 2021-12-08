@@ -31,9 +31,10 @@ const ListOfProjectsSection= () => {
                     </div>
                 </div>
                 {/*Сделай компоненту из этого!!!*/}
+
                 <div className="projects-panel">
                     <div className={n.project}>
-                        <a href="#">
+                        <a href="/pageOfProject">
                             <h2>Разработка динамической карты погоды на 3D-модели Земли</h2>
                             <p className={n.description}>В данном проекте нужно связать нашу БД с заготовленной 3D-моделю
                                 Земли, чтобы отображать на ней облачность, температуру и осадки.</p>

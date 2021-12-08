@@ -1,0 +1,121 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+/*header {
+    margin-bottom: 100px;
+}*/
+
+.containerTop {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.navbar-dark .navbar-toggler-icon {
+    /*background-image: url("/img/filter.svg");*/
+}
+
+.nav {
+    padding: 10px 5%;
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 3rem;
+}
+
+.nav-link {
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    letter-spacing: -0.04em;
+    color: #666666;
+}
+
+.logo-IIS {
+    max-width: 177px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p {
+    margin: 0;
+}
+
+.formSignin {
+    width: 100%;
+    max-width: 368px;
+    margin: auto;
+    text-align: center;
+
+    /*border: 1px solid black;*/
+}
+
+input {
+    background: #EAEAEA;
+    border-radius: 10px;
+    width: 100%;
+    border: none;
+}
+
+input, select, textarea {
+    padding: 12px 26px;
+}
+
+.formFloating,
+select,
+textarea {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    letter-spacing: -0.04em;
+    font-feature-settings: 'kern' off;
+    color: #8E8E8E;
+    background: #EAEAEA;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    border: none;
+
+}
+
+.formSelect {
+    width: 100%;
+}
+
+textarea {
+    width: 100%;
+    min-height: 150px;
+    margin-bottom: 0;
+}
+
+.formFloating:last-child {
+    margin-bottom: 18px;
+}
+
+.btnn {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    width: 100%;
+    padding: 12px 17px;
+    color: #fff;
+    border-radius: 10px;
+    border: none;
+    margin-top: 23px;
+    margin-bottom: 23px;
+    background: #4A83B8;
+}

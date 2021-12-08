@@ -1,9 +1,4 @@
-/*import './App.css';*/
 import React from "react";
-import Footer from "./Components/Footer/footer";
-import Header from "./Components/Header/header";
-import Information from "./Components/Information/information";
-import Partners from "./Components/Partners/partners";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Landing from "./Components/landing";
 import Login from "./Components/Login/login";
@@ -12,6 +7,8 @@ import Profile from "./Components/Profile/profile";
 import SettingsProfile from "./Components/SettingsProfile/settingsProfile";
 import PageOfProject from "./Components/PageOfProject/pageOfProject";
 import ListOfProjects from "./Components/ListOfProjects/listOfProjects";
+import ContactUs from "./Components/ContactUs/contactUs";
+import TechSupport from "./Components/TechSupport/techSupport";
 
 
 function App() {
@@ -26,6 +23,8 @@ function App() {
                   <Route path="/settingsProfile" element={<SettingsProfile/>} />
                   <Route path="/pageOfProject" element={<PageOfProject/>} />
                   <Route path="/listOfProjects" element={<ListOfProjects/>} />
+                  <Route path="/contactus" element={<ContactUs/>} />
+                  <Route path="/techsupport" element={<TechSupport/>} />
               </Routes>
           </div>
       </BrowserRouter>

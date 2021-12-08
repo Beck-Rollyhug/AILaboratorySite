@@ -12,7 +12,6 @@ const Card = (props) => {
                 <div ClassName={n.text}>
                     <p>{props.text}</p>
                 </div>
-
             </div>
         </div>
     );

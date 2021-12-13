@@ -1,14 +1,29 @@
 import json
+import uuid
 
 from aiohttp import web, ClientSession
+from aiohttp_session import get_session, setup, SimpleCookieStorage
 from Database.Users import *
 
 
 def start_server():
+    uuids = []
     routes = web.RouteTableDef()
+
+    @routes.get('/api/check_uuid')
+    async def check_uuid(request):
+        session = await get_session(request)
+        my_uuid = session.get('auth')
+        if my_uuid in uuids:
+            return web.Response(status=200, text=json.dumps({'status': 210}))
+        return web.Response(status=200, text=json.dumps({'status': 400}))
 
     @routes.post('/api/login')
     async def log_in(request):
+        my_uuid = uuid.uuid4()
+        session = await get_session(request)
+        session['auth'] = f"{my_uuid}"
+        uuids.append(session['auth'])
         server_data = await request.json()
         login = server_data['email']
         password = server_data['pass']
@@ -17,7 +32,6 @@ def start_server():
             user = Users().find(User(password=password, email=login))
             if user.id:
                 return web.Response(status=200, text=json.dumps({'user_id': user.id, 'status': 10}))
-
         bad_json = {'status': 120}
         return web.json_response(bad_json)
 
@@ -38,5 +52,6 @@ def start_server():
         return web.Response(status=200, text=json.dumps({'user_id': None, 'status': 0}))
 
     app = web.Application()
+    setup(app, SimpleCookieStorage())
     app.add_routes(routes)
     web.run_app(app)

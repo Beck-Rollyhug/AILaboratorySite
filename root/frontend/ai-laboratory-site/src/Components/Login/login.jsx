@@ -1,6 +1,7 @@
 import React from "react";
-import style from "./login.module.css"
+import style from "./login.module.css";
 import {Link} from "react-router-dom";
+import ProjectsList from "../Projects List/projectsList";
 
 
 class Login extends React.Component {
@@ -20,27 +21,58 @@ class Login extends React.Component {
         console.log(this.state.email)
     }
 
-    getAccount(props) {
-        let response = fetch("http://localhost:3000/api/login",
-            {
-                    method: 'POST',
-                    headers: {
-                        'ContentType': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        email: props.email,
-                        pass: props.pass
-                    })
-            })
-            .then((responses) => responses.json())
-            .then((data) => {
-                console.log('ok', data);
-            })
+    async isLogged() {
 
-        if (response.ok) {
-            alert( "OK" )
-            let json = response.json();
+        let response = await fetch("/api/check_uuid")
+
+        if (response.ok)
+        {
+            let json = await response.json();
+            let status = json['status']
+            if (status === 210)
+                alert('Авторизован')
+            else if (status === 400)
+                alert('Не авторизован')
+            else {
+                alert('Не могу проверит авторизацию, status:' + status)
+            }
+        } else {
+            alert("Ошибка HTTP: " + response.status);
         }
+    }
+
+    async getAccount(props) {
+
+        let response = await fetch("/api/login",
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    'email': props.email,
+                    'pass': props.pass
+                })
+            })
+        if (response.ok)
+        {
+            let json = await response.json();
+            console.log(response.status, json['status']);
+            let status = json['status']
+            if (status === 0)
+                alert('Пользователь не найден')
+            else if (status === 10)
+                alert('Найден Пользователь')
+            else if (status === 20)
+                alert('Найден Пользователь')
+            else {
+                alert('Cannot read status')
+            }
+        } else {
+            alert("Ошибка HTTP: " + response.status);
+        }
+
+        await this.isLogged()
     }
 
     render() {
@@ -61,7 +93,6 @@ class Login extends React.Component {
                            value={this.state.pass}
                            onChange={ this.handleChange }/>
                 </label>
-                {/*<button onClick={ this.getAccount }>Войти</button>*/}
                 <input type={"button"} value={"Login"} onClick={ () => { this.getAccount(this.state) } }/>
             </form>
 

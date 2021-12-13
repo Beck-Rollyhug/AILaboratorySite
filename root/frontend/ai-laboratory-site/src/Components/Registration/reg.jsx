@@ -9,7 +9,8 @@ class Reg extends React.Component {
         super(props);
         this.state = {
             email: '',
-            pass: ''
+            pass: '',
+            name: ''
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -22,19 +23,21 @@ class Reg extends React.Component {
         console.log(this.state.email)
     }
 
-    getAccount = (props) => {
+    addAccount = (props) => {
         const email = this.state.email;
         const pass = this.state.pass;
+        const name = this.state.name
         console.log(email, pass);
-        fetch("http://localhost:3000/api/login",
+        fetch("/api/reg",
             {
                 method: 'POST',
                 headers: {
                     'ContentType': 'application/json'
                 },
                 body: JSON.stringify({
-                    email: email,
-                    pass: pass
+                    'email': email,
+                    'pass': pass,
+                    'name': name
                 })
             })
             .then((response) => response.json())
@@ -47,15 +50,28 @@ class Reg extends React.Component {
         return (
             <div className={style.centered}>
                 <h1>Registration</h1>
-                <div>
-                    <input/>
-                </div>
-                <div>
-                    <input/>
-                </div>
-                <div>
-                    <button>Зарегистрироваться</button>
-                </div>
+
+                <form className={ style.bordered }>
+                    <label>
+                        <p>Почта:</p>
+                        <input name='email' type='text'
+                               value={this.state.email}
+                               onChange={ this.handleChange }/>
+                    </label>
+                    <label>
+                        <p>Пароль:</p>
+                        <input name='pass' type='text'
+                               value={this.state.pass}
+                               onChange={ this.handleChange }/>
+                    </label>
+                    <label>
+                        <p>Имя (ФИО):</p>
+                        <input name='name' type='text'
+                               value={this.state.name}
+                               onChange={ this.handleChange }/>
+                    </label>
+                    <input type={"button"} value={"Sign up"} onClick={ () => { this.addAccount(this.state) } }/>
+                </form>
 
                 <div className={style.centered}>
                     <Link to="/login">Войти</Link>

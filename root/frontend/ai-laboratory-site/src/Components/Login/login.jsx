@@ -1,6 +1,7 @@
 import n from "./login.module.css"
 import {Link} from "react-router-dom";
 import iisLogo from "../../img/IIS logo.png"
+import Card from "../Information/Card/card";
 
 const Login = () => {
     return (

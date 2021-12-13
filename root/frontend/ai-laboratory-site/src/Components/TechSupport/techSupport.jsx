@@ -1,24 +1,24 @@
 import React from "react";
-import n from "./profile.module.css";
+import n from "./techSupport.module.css";
 import HeaderOfWorkPage from "../HeaderOfWorkPage/headerOfWorkPage";
-import ProfileSection from "./ProfileSection/profileSection";
+import TechSupportSection from "./TechSupport/TechSupportSection";
 
-const Profile = () => {
+const TechSupport = () => {
   return(
       <body className={n.body}>
       <div className={n.profileHeader}>
           <HeaderOfWorkPage first = "Главная" firstLink = "/"
-                            second = "Проекты" secondLink = "/listOfProjects"
-                            third = "Профиль" thirdLink ="/profile"
+                            second = "Проекты" secondLink = "/profile"
+                            third = "Профиль" thirdLink ="/"
                             fourth = "Связаться с нами" fourthLink="/contactus"
                             fifth = "Выйти" fifthlink="#"
           />
       </div>
         <div className={n.profileSection}>
-            <ProfileSection />
+            <TechSupportSection />
         </div>
       </body>
   );
 }
 
-export default Profile;
+export default TechSupport;

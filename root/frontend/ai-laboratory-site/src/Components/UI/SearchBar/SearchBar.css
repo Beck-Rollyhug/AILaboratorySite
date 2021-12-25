@@ -1,0 +1,70 @@
+.searchBar {
+    width: 67%;
+    border: 2px solid #959595;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 10px 19px;
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 10px;
+}
+
+#filter {
+    width: 30px;
+    height: 29px;
+    margin-right: 18px;
+}
+
+.searchProject {
+    width: 700px;
+}
+
+.searchAdd {
+    width: 100%;
+    display: flex;
+    margin-bottom: 40px;
+    display: none;
+}
+
+.searchAddBar {
+    margin-bottom: 7px;
+}
+
+.searchAddCurator {
+    flex-basis: 300px;
+    margin-right: 15px;
+}
+
+.searchAddTechno {
+    flex-basis: 450px;
+    margin-right: 15px;
+}
+
+.searchAddPartner {
+    flex-basis: 350px;
+}
+
+input {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: -0.04em;
+    font-feature-settings: 'kern' off;
+    color: #959595;
+    border: 2px solid #959595;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 15px 19px;
+    width: 100%;
+}
+
+input[class="searchProject"],
+input[class="searchProject"]:focus {
+    outline: none;
+    border: none;
+    padding: 0;
+    border-radius: 0;
+}

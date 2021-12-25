@@ -1,0 +1,240 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  margin-bottom: 60px;
+}
+
+.containerTop {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.navbarToggler {
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.navbarTogglerIcon {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  /*background: url("/img-ds/filter.svg") center no-repeat #FFFFFF;*/
+}
+
+.nav {
+  padding: 10px 5%;
+  display: flex;
+  flex: 1 0 auto;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.flexContainer {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+}
+
+.flexContainer:last-child {
+  justify-content: flex-end;
+}
+
+.navLink {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  letter-spacing: -0.04em;
+  color: #666666;
+}
+
+.logo-IIS {
+  max-width: 177px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.containerMenu {
+  max-width: 64%;
+  margin: 0 auto;
+}
+
+.searchBar {
+  width: 67%;
+  border: 2px solid #959595;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 10px 19px;
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 10px;
+}
+
+#filter {
+  width: 30px;
+  height: 29px;
+  margin-right: 18px;
+}
+
+.searchProject {
+  width: 700px;
+}
+
+.searchAdd {
+  width: 100%;
+  display: flex;
+  margin-bottom: 40px;
+  display: none;
+}
+
+.searchAddBar {
+  margin-bottom: 7px;
+}
+
+.searchAddCurator {
+  flex-basis: 300px;
+  margin-right: 15px;
+}
+
+.searchAddTechno {
+  flex-basis: 450px;
+  margin-right: 15px;
+}
+
+.searchAddPartner {
+  flex-basis: 350px;
+}
+
+input {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: -0.04em;
+  font-feature-settings: 'kern' off;
+  color: #959595;
+  border: 2px solid #959595;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 15px 19px;
+  width: 100%;
+}
+
+input[class="searchProject"],
+input[class="searchProject"]:focus {
+  outline: none;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+}
+
+.project {
+  border: 2px solid #959595;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+h2 {
+  font-family: Open Sans, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 27px;
+  letter-spacing: -0.04em;
+  color: #666666;
+  margin: 0;
+  margin-bottom: 4px;
+}
+
+p {
+  margin: 0;
+}
+
+.description {
+  font-family: Open Sans, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: -0.04em;
+  color: #959595;
+  margin-bottom: 59px;
+}
+
+.footerTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skills span {
+  display: inline-block;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: -0.04em;
+  color: #FFFFFF;
+
+  padding: 5px 17px;
+  margin-right: 10px;
+}
+
+.manCount {
+  font-family: Open Sans, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: -0.04em;
+  color: #666666;
+  border: 1px solid #666666;
+  border-radius: 10px;
+  padding: 6px 16px;
+}
+
+.PostreSQL {
+  background: #45ADCE;
+  border-radius: 5px;
+}
+
+.Python {
+  background: #23DF58;
+  border-radius: 5px;
+}
+
+.AutodeskMaya2020 {
+  background: #FF7B31;
+  border-radius: 5px;
+}
+
+.Assembly {
+  background: #3CDF7E;
+  border-radius: 5px;
+}
+
+.C\+\+ {
+  background: #23DF58;
+  border-radius: 5px;
+}

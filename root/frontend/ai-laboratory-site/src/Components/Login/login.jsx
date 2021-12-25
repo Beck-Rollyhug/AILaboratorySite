@@ -1,7 +1,6 @@
 import React from "react";
 import style from "./login.module.css";
 import {Link} from "react-router-dom";
-import ProjectsList from "../Projects List/projectsList";
 
 
 class Login extends React.Component {
@@ -18,7 +17,6 @@ class Login extends React.Component {
         this.setState({
             [event.target.name]: event.target.value
         });
-        console.log(this.state.email)
     }
 
     async isLogged() {
@@ -64,7 +62,7 @@ class Login extends React.Component {
             else if (status === 10)
                 alert('Найден Пользователь')
             else if (status === 20)
-                alert('Найден Пользователь')
+                alert('Найден Организатор')
             else {
                 alert('Cannot read status')
             }

@@ -1,0 +1,149 @@
+
+html {
+    scroll-behavior: smooth;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+.container {
+    width: 67%;
+    margin: 0 auto;
+    padding: 0 5px;
+}
+
+.container:after {
+    display: table;
+    clear: both;
+    content: "";
+}
+
+p {
+    margin: 0;
+}
+
+
+.mainTitle {
+    height: 100vh;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 73.96%, #000000 100%), url('../../img/boy_pic_original.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+    border-top: 1px solid transparent;
+}
+
+.menuTop {
+    position: relative;
+    margin-top: 5.3rem;
+}
+
+.title {
+    position: absolute;
+    top: 0;
+    left: 50vh;
+}
+
+.title h2 {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    letter-spacing: -0.065em;
+    margin-bottom: 0;
+    margin-top: 0;
+    color: white;
+}
+
+.title p {
+    font-style: italic;
+    font-weight: 300;
+    font-size: 26px;
+    line-height: 35px;
+    letter-spacing: -0.04em;
+}
+
+.promo {
+    float: right;
+    width: 530px;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: -0.04em;
+    margin-top: 19em;
+    margin-bottom: 80px;
+}
+
+.information {
+    height: 100vh;
+    background-color: #010101;
+    color: #fff;
+    border: 1px solid transparent;
+}
+
+.scroll {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
+}
+
+.scroll .left {
+    width: 79px;
+    border-left: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    transform: rotate(23.5deg);
+    margin-right: -6px;
+}
+
+.scroll .right {
+    width: 79px;
+    border-right: 1px solid #fff;
+    border-top: 1px solid #fff;
+    /*transform: matrix(-0.92, 0.4, 0.4, 0.92, 0, 0);*/
+    transform: rotate(-23.5deg);
+}
+
+nav {
+    height:50px;
+    width:100%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+}
+
+.burgerBtn{
+    width: 30px;
+    height: 30px;
+    margin-left: 20px;
+    position: relative;
+    cursor: pointer;
+}
+
+
+/*.burgerBtn:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 30px;
+    background-color: white;
+    height: 3px;
+}*/
+
+.burgerBtn span{
+    display: inline-block;
+    width: 2.5em;
+    height: 2.5em;
+    vertical-align: middle;
+    background-image: url("../../img/burger-menu.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    background-color: transparent;
+}
+
+
+

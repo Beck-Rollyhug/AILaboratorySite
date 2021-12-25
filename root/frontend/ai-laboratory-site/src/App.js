@@ -1,22 +1,24 @@
-import './App.css';
-import React from "react";
-//import Landing from "./Components/landing";
-import Login from "./Components/Login/login";
-import {BrowserRouter, Routes, Route} from "react-router-dom";
-import Reg from "./Components/Registration/reg";
+import './Styles/App.css';
+import React, {useState} from "react";
+import {BrowserRouter} from "react-router-dom";
+import Navbar from "./Components/UI/Navbar/Navbar";
+import AppRouter from "./Components/AppRouter";
+import {AuthContext} from "./context";
 
 
-function App (props) {
+function App () {
+    const [isAuth, setIsAuth] = useState(false);
     return (
-        <BrowserRouter>
+        <AuthContext.Provider value={{
+            isAuth,
+            setIsAuth: setIsAuth
+        }}>
             <div className="App">
-                <Routes>
-                    <Route path="/" element={<Login states={props.states}/>} />
-                    <Route path="/login" element={<Login states={props.states}/>} />
-                    <Route path="/reg" element={<Reg />} />
-                </Routes>
+                <BrowserRouter>
+                        <AppRouter/>
+                </BrowserRouter>
             </div>
-        </BrowserRouter>
+        </AuthContext.Provider>
     );
 }
 

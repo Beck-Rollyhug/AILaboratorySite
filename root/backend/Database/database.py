@@ -1,57 +1,49 @@
 import psycopg2
 import json
-from psycopg2 import Error
-from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
+from psycopg2.extras import RealDictCursor
+
+
+def _get_pass():
+    with open("Database/settings.json") as json_data:
+        settings = json.load(json_data)
+        return settings['password']
 
 
 class Database:
     """
-    Базовый класс для работы с БД
-    Не рекомендуется создавать объекты напрямую!
+    Класс для работы с БД
+    Не рекомендуется использовать самостоятельно!
     """
-    connection = None
-
-    def __init__(self):
-        if not self.connection:
-            try:
-                self._connect()
-                Database.is_conn = True
-            except (Exception, Error) as error:
-                print("Ошибка при работе с PostgreSQL", error)
-                Database.is_conn = False
-        self.connection = Database.connection
+    password = _get_pass()
 
     @staticmethod
-    def _connect():
-        # Подключение к существующей базе данных
-        with open("Database/settings.json") as json_data:
-            settings = json.load(json_data)
-            connection = psycopg2.connect(user="postgres",
-                                          # пароль, который указали при установке PostgreSQL
-                                          password=settings['password'],
-                                          host="127.0.0.1",
-                                          port="5432",
-                                          database="laboratoryDB")
-            connection.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
-            # Курсор для выполнения операций с базой данных
-            #cursor = connection.cursor()
-            #sql_create_database = 'create database postgres_db'
-            #cursor.execute(sql_create_database)
-            Database.connection = connection
-            print("Соединение установлено")
-
-    def _execute(self, query, wait_res=False):
-        with self.connection.cursor() as cursor:
-            cursor.execute(query)
-            if wait_res:
-                res = cursor.fetchall()
-            else:
-                res = cursor.statusmessage
-            self.connection.commit()
+    def execute(query, *args):
+        con = Database.__connect()
+        if not con:
+            return None
+        cursor = con.cursor(cursor_factory=RealDictCursor)
+        try:
+            cursor.execute(query, args)
+            res = cursor.fetchall()
+        except psycopg2.ProgrammingError as e:
+            print(f"Error: {e}")
+            res = None
+        finally:
+            con.close()
         return res
 
-    def exit(self):
-        if self.connection:
-            self.connection.close()
-            print("Cоединение закрыто")
-
+    @staticmethod
+    def __connect():
+        try:
+            con = psycopg2.connect(
+                user="postgres",
+                password=Database.password,
+                host="127.0.0.1",
+                port="5432",
+                database="laboratoryDB"
+            )
+            con.autocommit = True
+        except psycopg2.OperationalError as e:
+            con = None
+            print(f"Error: {e}")
+        return con

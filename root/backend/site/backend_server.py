@@ -20,9 +20,12 @@ def start_server():
 
     @routes.post('/api/profile')
     async def get_user(request):
-        user_id = request.json().get('user_id')
+        server_data = await request.post()
+        user_id = server_data.get('id')
         if user_id:
-            bl_funcs.find_user({})
+            user_data = bl_funcs.find_user(server_data)
+            if user_data:
+                return web.Response(status=200, text=json.dumps(user_data[0]))
         return web.Response(status=200, text=json.dumps({'status': 0}))
 
     @routes.post('/api/login')
@@ -31,7 +34,7 @@ def start_server():
         session = await get_session(request)
         session['auth'] = f"{my_uuid}"
         uuids.append(session['auth'])
-        server_data = await request.post()
+        server_data = await request.json()
         login = server_data.get('email')
         password = server_data.get('password')
         if login and password:

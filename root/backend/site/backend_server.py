@@ -29,9 +29,10 @@ def start_server():
         if user_id:
             user_data = bl_funcs.find_user(server_data)
             if user_data:
-                result = dict(user_data[0])
-                result.update({'status': 200})
-                return web.Response(status=200, text=json.dumps(result))
+                result = user_data[0]
+                user_projects = bl_funcs.get_user_projects(user_id)
+                result.update({'projects': user_projects})
+                return web.Response(status=200, text=json.dumps({'status': 200, 'data': result}))
         return web.Response(status=200, text=json.dumps({'status': 0}))
 
     @routes.post('/api/login')
@@ -49,7 +50,7 @@ def start_server():
         if login and password:
             user = bl_funcs.find_user(server_data)
             if user:
-                user_data = dict(user[0])
+                user_data = user[0]
                 return web.Response(status=200, text=json.dumps({'id': user_data.get('id'), 'status': 10}))
         return web.json_response({'status': 120})
 
@@ -66,7 +67,7 @@ def start_server():
             if not bl_funcs.find_user({'email': login}):
                 bl_funcs.add_user(server_data)
                 user = bl_funcs.find_user(server_data)[0]
-                return web.Response(status=200, text=json.dumps({'user_id': dict(user).get('id'), 'status': 40}))
+                return web.Response(status=200, text=json.dumps({'user_id': user.get('id'), 'status': 40}))
             return web.Response(status=200, text=json.dumps({'user_id': None, 'status': 30}))
         return web.Response(status=200, text=json.dumps({'user_id': None, 'status': 0}))
 

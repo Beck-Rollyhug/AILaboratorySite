@@ -1,6 +1,10 @@
 from .database import *
 
 
+def get_all_users():
+    return Database.get_all_from("Users")
+
+
 def add_user(data):
     """
     Добавить пользователя в бд.
@@ -57,6 +61,11 @@ def get_all_news():
 
 def write_user_on_project(user_id, project_id):
     Database.add("UsersProjects", '"user_id", "project_id"', [user_id, project_id])
+    Database.add("UsersProjects", '"user_id", "project_id"', [user_id, project_id])
+
+
+def del_user_on_project(user_id, project_id):
+    Database.delete("UsersProjects", {"user_id":user_id, "project_id":project_id})
 
 
 def get_all_project():
@@ -81,4 +90,42 @@ def add_new(data):
     """
     names = '"' + '", "'.join(data.keys()) + '"'
     return Database.add("Articles", names, data.values())
+
+
+def get_projects_for_admin():
+    """
+    Получить все проекты для админа
+    """
+    query = f"""
+        SELECT
+            projects.id
+            , projects.title
+            , projects.description
+            , projects.users_limit
+            , part.name as partner_name
+            , uni.name as uni_name
+            , users.full_name as manager_name
+            , users.email as manager_email
+            , array_agg(students.id) students
+        FROM "Projects" projects
+        left join "Partners" part on projects.partner_id=part.id
+        left join "Universities" uni on projects.uni_id=uni.id
+        left join "Users" users on projects.manager_id=users.id
+        left join "Users" students on students.id in (
+            select "user_id"
+            from "UsersProjects" us_pr
+            where us_pr."project_id"=projects.id
+        )
+        group by 
+            projects.id
+            , projects.title
+            , projects.description
+            , projects.users_limit
+            , part.name
+            , uni.name
+            , users.full_name
+            , users.email
+    """
+    return Database.execute(query)
+
 

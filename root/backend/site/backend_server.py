@@ -47,8 +47,6 @@ def start_server():
         login = server_data.get('email')
         password = server_data.get('password')
         if login and password:
-            print(base64.b64encode(password))
-            server_data['password'] = base64.b64encode(password)
             user = bl_funcs.find_user(server_data)
             if user:
                 user_data = dict(user[0])
@@ -66,7 +64,6 @@ def start_server():
         full_name = server_data.get('full_name')
         if login and password and full_name:
             if not bl_funcs.find_user({'email': login}):
-                server_data['password'] = base64.b64encode(password)
                 bl_funcs.add_user(server_data)
                 user = bl_funcs.find_user(server_data)[0]
                 return web.Response(status=200, text=json.dumps({'user_id': dict(user).get('id'), 'status': 40}))
@@ -76,10 +73,26 @@ def start_server():
     @routes.post('/api/profile/settings')
     async def update_user(request):
         # nginx
-        server_data = await request.post()
+        server_data = dict(await request.post())
         # nodeJS
-        # server_data = await request.json()
+        # server_data = dict(await request.json())
+        user_id = server_data.get('id')
+        if bl_funcs.find_user({'id': user_id}):
+            bl_funcs.update_user(server_data)
+            return web.Response(status=200, text=json.dumps({'status': 200}))
+        return web.Response(status=200, text=json.dumps({'status': 0}))
 
+    @routes.post('/api/project/project_entry')
+    async def project_entry(request):
+        # nginx
+        server_data = dict(await request.post())
+        # nodeJS
+        # server_data = dict(await request.json())
+        user_id = server_data.get('user_id')
+        project_id = server_data.get('project_io')
+        if user_id and project_id:
+            bl_funcs.write_user_on_project(user_id, project_id)
+            return web.Response(status=200, text=json.dumps({'status': 200}))
         return web.Response(status=200, text=json.dumps({'status': 0}))
 
     app = web.Application()

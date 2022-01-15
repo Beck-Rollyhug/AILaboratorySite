@@ -11,14 +11,19 @@ def start_server():
     uuids = []
     routes = web.RouteTableDef()
 
+    @routes.get('/api/admin/projects')
+    async def get_projects_for_admin():
+        project = bl_funcs.get_projects_for_admin()
+        return web.Response(status=200, text=json.dumps({'projects': project}))
+
     @routes.get('/api/projects')
     async def get_all_projects():
-        project = bl_funcs.get_all_project()
+        project = bl_funcs.all('Project')
         return web.Response(status=200, text=json.dumps({'projects': project}))
 
     @routes.get('/api/landing')
     async def get_news():
-        news = bl_funcs.get_all_news()
+        news = bl_funcs.all('Article')
         parents = bl_funcs.get_photo_partners()
         return web.Response(status=200, text=json.dumps({'data': {'articles': news, 'parents': parents}}))
 
@@ -76,7 +81,7 @@ def start_server():
         full_name = server_data.get('full_name')
         if login and password and full_name:
             if not bl_funcs.find_user({'email': login}):
-                bl_funcs.add_user(server_data)
+                bl_funcs.add('Users', server_data)
                 user = bl_funcs.find_user(server_data)[0]
                 return web.Response(status=200, text=json.dumps({'user_id': user.get('id'), 'status': 40}))
             return web.Response(status=200, text=json.dumps({'user_id': None, 'status': 30}))
@@ -90,7 +95,7 @@ def start_server():
         # server_data = dict(await request.json())
         user_id = server_data.get('id')
         if bl_funcs.find_user({'id': user_id}):
-            bl_funcs.update_user(server_data)
+            bl_funcs.update('Users', server_data)
             return web.Response(status=200, text=json.dumps({'status': 200}))
         return web.Response(status=200, text=json.dumps({'status': 0}))
 
@@ -115,7 +120,7 @@ def start_server():
         # server_data = dict(await request.json())
         article_id = server_data.get('id')
         if article_id:
-            bl_funcs.update_new(server_data)
+            bl_funcs.update('Articles', server_data)
             return web.Response(status=200, text=json.dumps({'status': 200}))
         return web.Response(status=200, text=json.dumps({'status': 0}))
 
@@ -125,7 +130,43 @@ def start_server():
         server_data = dict(await request.post())
         # nodeJS
         # server_data = dict(await request.json())
-        bl_funcs.add_new(server_data)
+        bl_funcs.add('Articles', server_data)
+        return web.Response(status=200, text=json.dumps({'status': 200}))
+
+    @routes.post('/api/article/delete')
+    async def update_new(request):
+        # nginx
+        server_data = dict(await request.post())
+        # nodeJS
+        # server_data = dict(await request.json())
+        bl_funcs.delete('Articles', server_data)
+        return web.Response(status=200, text=json.dumps({'status': 200}))
+
+    @routes.post('/api/project/add')
+    async def add_project(request):
+        # nginx
+        server_data = dict(await request.post())
+        # nodeJS
+        # server_data = dict(await request.json())
+        bl_funcs.add('Projects', server_data)
+        return web.Response(status=200, text=json.dumps({'status': 200}))
+
+    @routes.post('/api/project/add')
+    async def update_project(request):
+        # nginx
+        server_data = dict(await request.post())
+        # nodeJS
+        # server_data = dict(await request.json())
+        bl_funcs.update('Projects', server_data)
+        return web.Response(status=200, text=json.dumps({'status': 200}))
+
+    @routes.post('/api/project/add')
+    async def delete_project(request):
+        # nginx
+        server_data = dict(await request.post())
+        # nodeJS
+        # server_data = dict(await request.json())
+        bl_funcs.delete('Projects', server_data)
         return web.Response(status=200, text=json.dumps({'status': 200}))
 
     app = web.Application()

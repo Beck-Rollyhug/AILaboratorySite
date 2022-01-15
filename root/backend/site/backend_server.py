@@ -1,4 +1,5 @@
 import json
+import base64
 import uuid
 import Database.bl_funcs as bl_funcs
 
@@ -21,7 +22,7 @@ def start_server():
     @routes.post('/api/profile')
     async def get_user(request):
         # nginx
-        server_data = await request.post()
+        server_data = dict(await request.post())
         # nodeJS
         # server_data = await request.json()
         user_id = server_data.get('id')
@@ -40,13 +41,14 @@ def start_server():
         session['auth'] = f"{my_uuid}"
         uuids.append(session['auth'])
         # nginx
-        server_data = await request.post()
+        server_data = dict(await request.post())
         # nodeJS
         # server_data = await request.json()
         login = server_data.get('email')
         password = server_data.get('password')
         if login and password:
-            print('data was delivered')
+            print(base64.b64encode(password))
+            server_data['password'] = base64.b64encode(password)
             user = bl_funcs.find_user(server_data)
             if user:
                 user_data = dict(user[0])
@@ -56,19 +58,29 @@ def start_server():
     @routes.post('/api/reg')
     async def sign_in(request):
         # nginx
-        server_data = await request.post()
+        server_data = dict(await request.post())
         # nodeJS
         # server_data = await request.json()
-        login = server_data['email']
-        password = server_data['password']
-        full_name = server_data['full_name']
+        login = server_data.get('email')
+        password = server_data.get('password')
+        full_name = server_data.get('full_name')
         if login and password and full_name:
             if not bl_funcs.find_user({'email': login}):
+                server_data['password'] = base64.b64encode(password)
                 bl_funcs.add_user(server_data)
                 user = bl_funcs.find_user(server_data)[0]
                 return web.Response(status=200, text=json.dumps({'user_id': dict(user).get('id'), 'status': 40}))
             return web.Response(status=200, text=json.dumps({'user_id': None, 'status': 30}))
         return web.Response(status=200, text=json.dumps({'user_id': None, 'status': 0}))
+
+    @routes.post('/api/profile/settings')
+    async def update_user(request):
+        # nginx
+        server_data = await request.post()
+        # nodeJS
+        # server_data = await request.json()
+
+        return web.Response(status=200, text=json.dumps({'status': 0}))
 
     app = web.Application()
     setup(app, SimpleCookieStorage())

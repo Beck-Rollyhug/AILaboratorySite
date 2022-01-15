@@ -7,8 +7,7 @@ def add_user(data):
     data: Словарь -- {название поля в бд: значение}
     """
     names = '"' + '", "'.join(data.keys()) + '"'
-    values = ", ".join(['%s' for val in data.values()])
-    return Database.add("Users", names, values, data.values())
+    return Database.add("Users", names, data.values())
 
 
 def find_user(search_filter):
@@ -27,19 +26,41 @@ def update_user(data):
     return Database.update("Users", data)
 
 
-def get_user_projects():
-    pass
+def get_photo_partners():
+    """
+    Получить всех партнеров
+    """
+    return Database.get_all_from("Partners")
+
+
+def get_user_projects(user_id):
+    """
+    Получить все проекты, на которые записан пользователь
+    """
+    query = f"""
+        SELECT * 
+        FROM "Projects"
+        where "id" in (
+            SELECT "project_id"
+            FROM "UsersProjects"
+            where "user_id"='{user_id}' )
+    """
+    return Database.execute(query)
+
+
+def get_all_news():
+    """
+    Получить все новости
+    """
+    return Database.get_all_from("Articles")
 
 
 def write_user_on_project(user_id, project_id):
-    Database.add("UsersProjects", '"user_id", "project_id"', '%s, %s', [user_id, project_id])
+    Database.add("UsersProjects", '"user_id", "project_id"', [user_id, project_id])
 
 
 def get_all_project():
     """
     Получить все проекты
     """
-    query = """
-    select * from "Projects"
-    """
-    return Database.execute(query)
+    return Database.get_all_from("Projects")

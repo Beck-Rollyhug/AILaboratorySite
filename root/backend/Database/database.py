@@ -33,16 +33,24 @@ class Database:
         return res
 
     @staticmethod
-    def add(table, names, values, data):
+    def add(table, names, values):
         """
         Добавить пользователя в бд.
         data: Словарь -- {название поля в бд: значение}
         """
+        data = ", ".join(['%s' for val in values])
         query = f"""
             INSERT INTO "{table}"({names})
-                VALUES ({values});
+                VALUES ({data});
         """
-        return Database.execute(query, *list(data))
+        return Database.execute(query, *list(values))
+
+    @staticmethod
+    def get_all_from(table):
+        query = f"""
+        select * from "{table}"
+        """
+        return Database.execute(query)
 
     @staticmethod
     def find(table, search_filter):

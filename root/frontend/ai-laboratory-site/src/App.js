@@ -1,4 +1,4 @@
-import './Styles/App.css';
+import './App.css';
 import React, {useState} from "react";
 import {BrowserRouter} from "react-router-dom";
 import Navbar from "./Components/UI/Navbar/Navbar";

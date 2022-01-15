@@ -1,7 +1,7 @@
-import Header from "./Header/header";
-import Information from "./Information/information";
-import Partners from "./Partners/partners";
-import Footer from "./Footer/footer";
+import Header from "./_delete_later/Header/header";
+import Information from "./_delete_later/Information/information";
+import Partners from "./_delete_later/Partners/partners";
+import Footer from "./_delete_later/Footer/footer";
 import {useContext, useEffect} from "react";
 import {AuthContext} from "../context";
 

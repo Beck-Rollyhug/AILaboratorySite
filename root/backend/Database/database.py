@@ -33,6 +33,46 @@ class Database:
         return res
 
     @staticmethod
+    def add(table, names, values, data):
+        """
+        Добавить пользователя в бд.
+        data: Словарь -- {название поля в бд: значение}
+        """
+        query = f"""
+            INSERT INTO "{table}"({names})
+                VALUES ({values});
+        """
+        return Database.execute(query, *list(data))
+
+    @staticmethod
+    def find(table, search_filter):
+        """
+        Добавить пользователя в бд.
+        data: Словарь -- {название поля в бд: значение}
+        """
+        fltr = " and ".join([f'"{key}"=%s' for key in search_filter.keys()])
+        query = f"""
+        select * from "{table}"
+        where {fltr}
+        """
+        return Database.execute(query, *list(search_filter.values()))
+
+    @staticmethod
+    def update(table, data: dict):
+        """
+        Добавить пользователя в бд.
+        data: Словарь -- {название поля в бд: значение}
+        """
+        id = data.pop('id')
+        fltr = ", ".join([f'"{key}"=%s' for key in data])
+        query = f"""
+        UPDATE "{table}"
+        SET {fltr}
+        WHERE id='{id}'
+        """
+        return Database.execute(query, *list(data.values()))
+
+    @staticmethod
     def __connect():
         try:
             con = psycopg2.connect(

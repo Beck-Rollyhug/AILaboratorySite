@@ -1,0 +1,207 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+.containerTop {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.navbarDark .navbarTogglerIcon {
+    background-image: url("../../../../img/urfu.jpg");
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.nav {
+    padding: 10px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navLink {
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    letter-spacing: -0.04em;
+
+    color: #666666;
+}
+
+.mainMenu {}
+.logoIIS {
+    max-width: 177px;
+}
+
+.containerMenu {
+    max-width: 64%;
+    margin: 0 auto;
+}
+
+.userProfile {
+    max-width: 500px;
+    margin-bottom: 30px;
+}
+
+.userProfile p {
+    font-family: Open Sans, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: -0.04em;
+    color: #808080;
+}
+
+.name {
+    font-family: Open Sans, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 49px;
+    letter-spacing: -0.04em;
+    color: #666666;
+    margin: 0;
+}
+
+.btnn {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    font-variant: small-caps;
+    color: #FFFFFF;
+    display: inline-block;
+    max-width: 174px;
+    background: #4A83B8;
+    border-radius: 10px;
+    border: none;
+    padding: 12px 50px;
+    margin-bottom: 23px;
+    margin-top: 20px;
+}
+
+.listFullProjects {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    font-variant: small-caps;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.projectsPanel {
+    text-align: center;
+}
+
+.project {
+    border: 2px solid #959595;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: start;
+}
+
+h3 {
+    font-family: Open Sans, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 27px;
+    letter-spacing: -0.04em;
+    color: #666666;
+    margin: 0;
+    margin-bottom: 4px;
+}
+
+p {
+    margin: 0;
+}
+
+.description {
+    font-family: Open Sans, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: -0.04em;
+    color: #959595;
+    margin-bottom: 50px;
+}
+
+.footerTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.skills span {
+    display: inline-block;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+
+    padding: 5px 17px;
+    margin-right: 10px;
+}
+
+.manCount {
+    font-family: Open Sans, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: -0.04em;
+    color: #666666;
+    border: 1px solid #666666;
+    border-radius: 10px;
+    padding: 6px 16px;
+}
+
+.PostreSQL {
+    background: #45ADCE;
+    border-radius: 5px;
+}
+
+.Python {
+    background: #23DF58;
+    border-radius: 5px;
+}
+
+.AutodeskMaya2020 {
+    background: #FF7B31;
+    border-radius: 5px;
+}
+
+.Assembly {
+    background: #3CDF7E;
+    border-radius: 5px;
+}
+
+.C\+\+ {
+    background: #23DF58;
+    border-radius: 5px;
+}

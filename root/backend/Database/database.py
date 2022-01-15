@@ -34,17 +34,18 @@ class Database:
         return res
 
     @staticmethod
-    def add(table, names, values):
+    def add(table, data):
         """
         Добавить пользователя в бд.
         data: Словарь -- {название поля в бд: значение}
         """
-        data = ", ".join(['%s' for val in values])
+        names = '"' + '", "'.join(data.keys()) + '"'
+        ss = ", ".join(['%s' for val in data.values()])
         query = f"""
             INSERT INTO "{table}"({names})
-                VALUES ({data});
+                VALUES ({ss});
         """
-        return Database.execute(query, *list(values))
+        return Database.execute(query, *list(data.values()))
 
     @staticmethod
     def delete(table, filter):

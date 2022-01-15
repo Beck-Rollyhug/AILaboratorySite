@@ -30,6 +30,7 @@ class Database:
             res = None
         finally:
             con.close()
+        res = [dict(rc) for rc in res]
         return res
 
     @staticmethod

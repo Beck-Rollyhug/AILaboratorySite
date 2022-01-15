@@ -69,6 +69,10 @@ def get_projects_for_admin():
     return Database.execute(query)
 
 
+def find(table, filter):
+    return Database.find(table, filter)
+
+
 def add(table, data):
     names = '"' + '", "'.join(data.keys()) + '"'
     return Database.add(table, names, data.values())

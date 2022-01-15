@@ -11,6 +11,17 @@ def start_server():
     uuids = []
     routes = web.RouteTableDef()
 
+    @routes.get('/api/projects')
+    async def get_all_projects():
+        project = bl_funcs.get_all_project()
+        return web.Response(status=200, text=json.dumps({'projects': project}))
+
+    @routes.get('/api/landing')
+    async def get_news():
+        news = bl_funcs.get_all_news()
+        parents = bl_funcs.get_photo_partners()
+        return web.Response(status=200, text=json.dumps({'data': {'articles': news, 'parents': parents}}))
+
     @routes.get('/api/check_uuid')
     async def check_uuid(request):
         session = await get_session(request)
@@ -24,7 +35,7 @@ def start_server():
         # nginx
         server_data = dict(await request.post())
         # nodeJS
-        # server_data = await request.json()
+        # server_data = dict(await request.json())
         user_id = server_data.get('id')
         if user_id:
             user_data = bl_funcs.find_user(server_data)
@@ -44,7 +55,7 @@ def start_server():
         # nginx
         server_data = dict(await request.post())
         # nodeJS
-        # server_data = await request.json()
+        # server_data = dict(await request.json())
         login = server_data.get('email')
         password = server_data.get('password')
         if login and password:
@@ -59,7 +70,7 @@ def start_server():
         # nginx
         server_data = dict(await request.post())
         # nodeJS
-        # server_data = await request.json()
+        # server_data = dict(await request.json())
         login = server_data.get('email')
         password = server_data.get('password')
         full_name = server_data.get('full_name')
@@ -95,6 +106,27 @@ def start_server():
             bl_funcs.write_user_on_project(user_id, project_id)
             return web.Response(status=200, text=json.dumps({'status': 200}))
         return web.Response(status=200, text=json.dumps({'status': 0}))
+
+    @routes.post('/api/article/update')
+    async def update_new(request):
+        # nginx
+        server_data = dict(await request.post())
+        # nodeJS
+        # server_data = dict(await request.json())
+        article_id = server_data.get('id')
+        if article_id:
+            bl_funcs.update_new(server_data)
+            return web.Response(status=200, text=json.dumps({'status': 200}))
+        return web.Response(status=200, text=json.dumps({'status': 0}))
+
+    @routes.post('/api/article/add')
+    async def update_new(request):
+        # nginx
+        server_data = dict(await request.post())
+        # nodeJS
+        # server_data = dict(await request.json())
+        bl_funcs.add_new(server_data)
+        return web.Response(status=200, text=json.dumps({'status': 200}))
 
     app = web.Application()
     setup(app, SimpleCookieStorage())

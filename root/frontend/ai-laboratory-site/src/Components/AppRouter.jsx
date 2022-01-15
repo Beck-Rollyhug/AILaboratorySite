@@ -23,6 +23,68 @@ const AppRouter = () => {
         }
     }, [])
 
+
+    const profile = {
+        full_name: 'Иванов Иван Иванович',
+        uni_name: 'УрФУ имени первого Президента России Б.Н.Ельцина',
+        study_program: 'Программная Инженерия',
+        study_year: '1',
+        study_group: 'РИ-290034',
+        email: 'email@mail.ru',
+        phone_number: '+79123459999',
+        other_contact: '@telegram_profile',
+        projects: [
+            {
+                id: '2',
+                title: 'Проект 2',
+                description: 'Описание 2',
+                manCountCurrent: '4',
+                users_limit: '5',
+                skills: [
+                    'skill 1',
+                    'skill 2'
+                ]
+            }
+        ]
+    }
+
+    const projects = [
+        {
+            id: '1',
+            title: 'Проект 1',
+            description: 'Описание 1',
+            manCountCurrent: '5',
+            users_limit: '5',
+            skills: [
+                'skill 1',
+                'skill 2',
+                'skill 3'
+            ]
+        },
+        {
+            id: '2',
+            title: 'Проект 2',
+            description: 'Описание 2',
+            manCountCurrent: '4',
+            users_limit: '5',
+            skills: [
+                'skill 1',
+                'skill 2'
+            ]
+        },
+        {
+            id: '3',
+            title: 'Проект 3',
+            description: 'Описание 3',
+            manCountCurrent: '3',
+            users_limit: '5',
+            skills: [
+                'skill 1'
+            ]
+        }
+    ]
+
+
     return (
         isAuth
             ?
@@ -30,9 +92,9 @@ const AppRouter = () => {
                 <Navbar/>
                 <Routes>
                     <Route path='/' element={<Landing/>}/>
-                    <Route path='/profile' element={<Profile/>}/>
+                    <Route path='/profile' element={<Profile profile={profile}/>}/>
                     <Route path='/profile/edit' element={<ProfileEdit/>}/>
-                    <Route path='/projects' element={<Projects/>}/>
+                    <Route path='/projects' element={<Projects projects={projects}/>}/>
                     <Route path='/projects/page' element={<ProjectPage/>}/>
                     <Route path='/contact_us' element={<ContactUs/>}/>
                     <Route path='/tech_support' element={<TechSupport/>}/>

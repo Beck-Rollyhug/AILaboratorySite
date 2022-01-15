@@ -25,12 +25,12 @@ class Database:
         try:
             cursor.execute(query, args)
             res = cursor.fetchall()
+            res = [dict(rc) for rc in res]
         except psycopg2.ProgrammingError as e:
             print(f"Error: {e}")
             res = None
         finally:
             con.close()
-        res = [dict(rc) for rc in res]
         return res
 
     @staticmethod
@@ -45,6 +45,19 @@ class Database:
                 VALUES ({data});
         """
         return Database.execute(query, *list(values))
+
+    @staticmethod
+    def delete(table, filter):
+        """
+        удалить строки из бд
+        filter: Словарь -- {название поля в бд: значение}
+        """
+        fltr = " and ".join([f'"{key}"=%s' for key in filter.keys()])
+        query = f"""
+        DELETE FROM "{table}"
+        WHERE {fltr}
+        """
+        return Database.execute(query, *list(filter.values()))
 
     @staticmethod
     def get_all_from(table):

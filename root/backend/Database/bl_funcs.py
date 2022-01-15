@@ -64,3 +64,21 @@ def get_all_project():
     Получить все проекты
     """
     return Database.get_all_from("Projects")
+
+
+def update_new(data):
+    """
+    Изменить данные о новости. ВАЖНО!!! Наличие поля id обязательно !!!
+    filter: Словарь -- {название поля в бд: значение}
+    """
+    return Database.update("Users", data)
+
+
+def add_new(data):
+    """
+    Добавить пользователя в бд.
+    data: Словарь -- {название поля в бд: значение}
+    """
+    names = '"' + '", "'.join(data.keys()) + '"'
+    return Database.add("Articles", names, data.values())
+

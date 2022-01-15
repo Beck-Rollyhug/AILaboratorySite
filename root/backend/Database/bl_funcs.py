@@ -1,5 +1,6 @@
 from Database.database import *
 
+
 def add_user(data):
     """
     Добавить пользователя в бд.
@@ -14,17 +15,17 @@ def add_user(data):
     return Database.execute(query, *list(data.values()))
 
 
-def find_user(filter):
+def find_user(search_filter):
     """
     Найти пользователя в бд.
     filter: Словарь -- {название поля в бд: значение}
     """
-    fltr = " and ".join([f'"{key}"=%s' for key in filter.keys()])
+    fltr = " and ".join([f'"{key}"=%s' for key in search_filter.keys()])
     query = f"""
     select * from "Users"
     where {fltr}
     """
-    return Database.execute(query, *list(filter.values()))
+    return Database.execute(query, *list(search_filter.values()))
 
 
 def get_all_project():

@@ -1,0 +1,45 @@
+.userProfile {
+    max-width: 100%;
+    margin-bottom: 30px;
+    margin-top: 50px;
+}
+
+.userProfile p {
+    font-family: Open Sans, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: -0.04em;
+    color: #808080;
+}
+
+.name {
+    font-family: Open Sans, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 49px;
+    letter-spacing: -0.04em;
+    color: #666666;
+    margin: 0;
+}
+
+.btn {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    font-variant: small-caps;
+    color: #FFFFFF;
+    display: inline-block;
+    max-width: 174px;
+    background: #4A83B8;
+    border-radius: 10px;
+    border: none;
+    padding: 12px 50px;
+    margin-bottom: 23px;
+    margin-top: 20px;
+}

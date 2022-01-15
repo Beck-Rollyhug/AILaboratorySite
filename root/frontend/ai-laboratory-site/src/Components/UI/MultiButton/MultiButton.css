@@ -1,0 +1,20 @@
+.btn {
+    box-sizing: content-box;
+    width: 150px;
+    padding: 12px 17px;
+    background: #4A83B8;
+    color: #fff;
+    border-radius: 10px;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.btn:hover {
+    background: #4173a1;
+    color: rgba(255, 255, 255, 0.91);
+}
+
+.btn:active {
+    background: #386895;
+}

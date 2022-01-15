@@ -1,0 +1,20 @@
+.link {
+    text-decoration: none;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    text-align: center;
+    color: #4A83B8;
+    display: flex;
+    justify-content: center;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.link:active {
+    color: #386895;
+    text-decoration: none;
+}

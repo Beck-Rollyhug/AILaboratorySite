@@ -3,7 +3,7 @@ import uuid
 
 from aiohttp import web, ClientSession
 from aiohttp_session import get_session, setup, SimpleCookieStorage
-from Database.Users import *
+from Database.bl_funcs import *
 
 
 def start_server():
@@ -29,7 +29,12 @@ def start_server():
         password = server_data['pass']
         if login and password:
             print('data was delivered')
-            user = Users().find(User(password=password, email=login))
+            # user = Users().find(User(password=password, email=login))
+            user = find_user(
+                {
+                    "email": login,
+                    "password": password
+                })
             if user.id:
                 return web.Response(status=200, text=json.dumps({'user_id': user.id, 'status': 10}))
         bad_json = {'status': 120}
@@ -42,12 +47,28 @@ def start_server():
         password = server_data['pass']
         full_name = server_data['name']
         if login and password and full_name:
+            user = find_user(
+                {
+                    "email": login
+                })
+            if not user.id:
+                new_user = add_user(
+                    {
+                        "email": login,
+                        "password": password,
+                        "full_name": full_name
+                    }
+                )
+                user_data = find_user({"email": login})
+                return web.Response(status=200, text=json.dumps({'user_id': user_data.id, 'status': 40}))
+            """
             new_user = User(email=login, password=password, full_name=full_name)
             user = Users().find(User(email=login))
             if not user.id:
                 Users().add(new_user)
                 user_data = Users().find(new_user)
                 return web.Response(status=200, text=json.dumps({'user_id': user_data.id, 'status': 40}))
+                """
             return web.Response(status=200, text=json.dumps({'user_id': None, 'status': 30}))
         return web.Response(status=200, text=json.dumps({'user_id': None, 'status': 0}))
 

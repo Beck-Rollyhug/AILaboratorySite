@@ -1,6 +1,6 @@
 import json
-import base64
 import uuid
+import Database.database as db
 import Database.bl_funcs as bl_funcs
 
 from aiohttp import web
@@ -13,17 +13,17 @@ def start_server():
 
     @routes.get('/api/admin/projects')
     async def get_projects_for_admin():
-        project = bl_funcs.get_projects_for_admin()
-        return web.Response(status=200, text=json.dumps({'projects': project}))
+        projects = bl_funcs.get_projects()
+        return web.Response(status=200, text=json.dumps({'projects': projects}))
 
     @routes.get('/api/projects')
     async def get_all_projects():
-        project = bl_funcs.all('Project')
+        project = db.Database.get_all_from('Project')
         return web.Response(status=200, text=json.dumps({'projects': project}))
 
     @routes.get('/api/landing')
     async def get_news():
-        news = bl_funcs.all('Article')
+        news = db.Database.get_all_from('Article')
         parents = bl_funcs.get_photo_partners()
         return web.Response(status=200, text=json.dumps({'data': {'articles': news, 'parents': parents}}))
 
@@ -43,7 +43,7 @@ def start_server():
         # server_data = dict(await request.json())
         user_id = server_data.get('id')
         if user_id:
-            user_data = bl_funcs.find_user(server_data)
+            user_data = db.Database.find('Users', server_data)
             if user_data:
                 result = user_data[0]
                 user_projects = bl_funcs.get_user_projects(user_id)
@@ -64,7 +64,7 @@ def start_server():
         login = server_data.get('email')
         password = server_data.get('password')
         if login and password:
-            user = bl_funcs.find_user(server_data)
+            user = db.Database.find('User', server_data)
             if user:
                 user_data = user[0]
                 return web.Response(status=200, text=json.dumps({'id': user_data.get('id'), 'status': 10}))
@@ -80,9 +80,9 @@ def start_server():
         password = server_data.get('password')
         full_name = server_data.get('full_name')
         if login and password and full_name:
-            if not bl_funcs.find_user({'email': login}):
-                bl_funcs.add('Users', server_data)
-                user = bl_funcs.find_user(server_data)[0]
+            if not db.Database.find('Users', {'email': login}):
+                db.Database.add('Users', server_data)
+                user = db.Database.find('Users', server_data)[0]
                 return web.Response(status=200, text=json.dumps({'user_id': user.get('id'), 'status': 40}))
             return web.Response(status=200, text=json.dumps({'user_id': None, 'status': 30}))
         return web.Response(status=200, text=json.dumps({'user_id': None, 'status': 0}))
@@ -94,8 +94,8 @@ def start_server():
         # nodeJS
         # server_data = dict(await request.json())
         user_id = server_data.get('id')
-        if bl_funcs.find_user({'id': user_id}):
-            bl_funcs.update('Users', server_data)
+        if db.Database.find('Users', {'id': user_id}):
+            db.Database.update('Users', server_data)
             return web.Response(status=200, text=json.dumps({'status': 200}))
         return web.Response(status=200, text=json.dumps({'status': 0}))
 
@@ -120,7 +120,7 @@ def start_server():
         # server_data = dict(await request.json())
         article_id = server_data.get('id')
         if article_id:
-            bl_funcs.update('Articles', server_data)
+            db.Database.update('Articles', server_data)
             return web.Response(status=200, text=json.dumps({'status': 200}))
         return web.Response(status=200, text=json.dumps({'status': 0}))
 
@@ -130,7 +130,7 @@ def start_server():
         server_data = dict(await request.post())
         # nodeJS
         # server_data = dict(await request.json())
-        bl_funcs.add('Articles', server_data)
+        db.Database.add('Articles', server_data)
         return web.Response(status=200, text=json.dumps({'status': 200}))
 
     @routes.post('/api/article/delete')
@@ -139,7 +139,7 @@ def start_server():
         server_data = dict(await request.post())
         # nodeJS
         # server_data = dict(await request.json())
-        bl_funcs.delete('Articles', server_data)
+        db.Database.delete('Articles', server_data)
         return web.Response(status=200, text=json.dumps({'status': 200}))
 
     @routes.post('/api/project/add')
@@ -148,7 +148,7 @@ def start_server():
         server_data = dict(await request.post())
         # nodeJS
         # server_data = dict(await request.json())
-        bl_funcs.add('Projects', server_data)
+        db.Database.add('Projects', server_data)
         return web.Response(status=200, text=json.dumps({'status': 200}))
 
     @routes.post('/api/project/add')
@@ -157,7 +157,7 @@ def start_server():
         server_data = dict(await request.post())
         # nodeJS
         # server_data = dict(await request.json())
-        bl_funcs.update('Projects', server_data)
+        db.Database.update('Projects', server_data)
         return web.Response(status=200, text=json.dumps({'status': 200}))
 
     @routes.post('/api/project/add')
@@ -166,7 +166,7 @@ def start_server():
         server_data = dict(await request.post())
         # nodeJS
         # server_data = dict(await request.json())
-        bl_funcs.delete('Projects', server_data)
+        db.Database.delete('Projects', server_data)
         return web.Response(status=200, text=json.dumps({'status': 200}))
 
     app = web.Application()

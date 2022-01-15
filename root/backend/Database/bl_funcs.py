@@ -24,12 +24,11 @@ def get_user_projects(user_id):
 
 
 def write_user_on_project(user_id, project_id):
-    Database.add("UsersProjects", '"user_id", "project_id"', [user_id, project_id])
-    Database.add("UsersProjects", '"user_id", "project_id"', [user_id, project_id])
+    Database.add("UsersProjects", {"user_id": user_id, "project_id": project_id})
 
 
 def del_user_on_project(user_id, project_id):
-    Database.delete("UsersProjects", {"user_id":user_id, "project_id":project_id})
+    Database.delete("UsersProjects", {"user_id": user_id, "project_id": project_id})
 
 
 def get_projects():

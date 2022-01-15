@@ -16,14 +16,13 @@ import Robot from "../img/robot_original.jpg";
 
 const AppRouter = () => {
     const {isAuth, setIsAuth} = useContext(AuthContext);
-    console.log(isAuth)
+    /*console.log(isAuth)*/
 
     useEffect(() => {
         if(localStorage.getItem('auth')) {
             setIsAuth(true)
         }
     }, [])
-
 
     const profile = {
         full_name: 'Иванов Иван Иванович',

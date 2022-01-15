@@ -1,18 +1,18 @@
-import Header from "./_delete_later/Header/header";
-import Information from "./_delete_later/Information/information";
-import Partners from "./_delete_later/Partners/partners";
-import Footer from "./_delete_later/Footer/footer";
+import Header from "./UI/LandingHeader/Header";
+import Articles from "./UI/LandingArticles/Articles";
+import Partners from "./UI/LandingPartners/Partners";
+import Footer from "./UI/LandingFooter/Footer";
 import {useContext, useEffect} from "react";
 import {AuthContext} from "../context";
 
-const Landing = () => {
+const Landing = ({landing}) => {
     const {isAuth, setIsAuth} = useContext(AuthContext);
     return (
         <div>
-            <Header />
             <h1>Is Auth: {isAuth}</h1>
-            <Information />
-            <Partners />
+            <Header />
+            <Articles articles={landing.articles}/>
+            <Partners partners={landing.partners}/>
             <Footer />
         </div>
     )

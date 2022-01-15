@@ -1,15 +1,16 @@
 import React from 'react';
-import n from "../../../_OldVersion/Information/Card/card.module.css";
+
+import './ArticleCase.css'
 
 const ArticleCase = ({article}) => {
     return (
-        <div className={n.card}>
-            <img src={article.img} className={n.cardImg} alt={article.title}/>
-            <div className={n.cardBody}>
-                <div className={n.header}>
+        <div className={'card'}>
+            {/*<img src={article.img} className={'cardImg'} alt={article.title}/>*/}
+            <div className={'cardBody'}>
+                <div className={'header'}>
                     <h1>{article.title}</h1>
                 </div>
-                <div className={n.text}>
+                <div className={'text'}>
                     <p>{article.text}</p>
                 </div>
             </div>

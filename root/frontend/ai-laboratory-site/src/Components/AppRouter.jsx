@@ -12,6 +12,7 @@ import ProfileEdit from "./ProfileEdit";
 import ProjectPage from "./ProjectPage";
 import Navbar from "./UI/Navbar/Navbar";
 import {AuthContext} from "../context";
+import Robot from "../img/robot_original.jpg";
 
 const AppRouter = () => {
     const {isAuth, setIsAuth} = useContext(AuthContext);
@@ -84,6 +85,33 @@ const AppRouter = () => {
         }
     ]
 
+    const landing = {
+        articles: [
+            {
+                id: 1,
+                title: "Статья 1",
+                text: "Описание 1",
+                img: {Robot}
+            },
+            {
+                id: 2,
+                title: "Статья 2",
+                text: "Описание 2",
+                img: {Robot}
+            },
+            {
+                id: 3,
+                title: "Стятья 3",
+                text: "Описание 3",
+                img: {Robot}
+            }
+        ],
+        partners: [
+            'partner image source 1',
+            'partner image source 2',
+            'partner image source 3'
+        ]
+    }
 
     return (
         isAuth
@@ -91,7 +119,7 @@ const AppRouter = () => {
             <div>
                 <Navbar/>
                 <Routes>
-                    <Route path='/' element={<Landing/>}/>
+                    <Route path='/' element={<Landing landing={landing}/>}/>
                     <Route path='/profile' element={<Profile profile={profile}/>}/>
                     <Route path='/profile/edit' element={<ProfileEdit/>}/>
                     <Route path='/projects' element={<Projects projects={projects}/>}/>
@@ -103,7 +131,7 @@ const AppRouter = () => {
             </div>
             :
             <Routes>
-                <Route path='/' element={<Landing/>}/>
+                <Route path='/' element={<Landing landing={landing}/>}/>
                 <Route path='/login' element={<Login/>}/>
                 <Route path='/reg' element={<Reg/>}/>
                 <Route path='*' element={<Login/>}/>

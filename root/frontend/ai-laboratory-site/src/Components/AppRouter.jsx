@@ -12,27 +12,22 @@ import ProfileEdit from "./ProfileEdit";
 import ProjectPage from "./ProjectPage";
 import Navbar from "./UI/Navbar/Navbar";
 import {AuthContext, UserContext} from "../context";
+import {Context} from "../index";
 
 
 const AppRouter = () => {
-    const {isAuth, setIsAuth} = useContext(AuthContext);
+    const {user} = useContext(Context);
+    console.log(user);
 
-    /*const getUserId = (value) =>
-    {
-        setUserId(value);
-    }*/
-    /*const user_id = 18;*/
-    /*console.log(isAuth)*/
-
-    useEffect(() => {
+    /*useEffect(() => {
         if(localStorage.getItem('auth')) {
             setIsAuth(true)
         }
         setIsAuth(false)
-    }, [])
+    }, [])*/
 
     return (
-        isAuth
+        user.isAuth
             ?
             <div>
                 <Navbar/>

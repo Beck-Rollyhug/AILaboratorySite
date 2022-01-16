@@ -47,7 +47,7 @@ async function getProjects(credentials) {
     console.log(response);
 }
 
-const Projects = () => {
+const Projects = ({userId}) => {
     const {isAuth, setIsAuth} = useContext(AuthContext);
     const navigate = useNavigate();
 

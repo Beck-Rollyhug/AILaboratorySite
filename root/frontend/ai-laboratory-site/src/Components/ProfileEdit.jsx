@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from "./UI/Navbar/Navbar";
 
-const ProfileEdit = () => {
+const ProfileEdit = ({userId}) => {
     return (
         <div>
             {/*<Navbar/>*/}

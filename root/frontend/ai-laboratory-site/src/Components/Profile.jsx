@@ -30,11 +30,31 @@ const profile = {
     ]
 }
 
-const Profile = () => {
+async function GetProfile(userId) {
+    let response = await fetch('/api/profile',
+        [
+            {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                'id': userId,
+            })
+        }
+    ])
+        .then(data => data.json());
+    console.log(response);
+}
+
+const Profile = ({userId}) => {
     const {isAuth, setIsAuth} = useContext(AuthContext)
     const navigate = useNavigate();
 
     const uuid = PostService.Check_uuid();
+
+    const profile1 = GetProfile(userId);
+
     if (uuid.status === 400)
     {
         setIsAuth(false);

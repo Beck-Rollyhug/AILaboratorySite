@@ -36,7 +36,7 @@ const landing = {
     ]
 }
 
-const Landing = () => {
+const Landing = ({userId}) => {
     const {isAuth, setIsAuth} = useContext(AuthContext)
     const navigate = useNavigate();
 

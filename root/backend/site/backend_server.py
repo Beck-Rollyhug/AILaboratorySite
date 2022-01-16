@@ -12,17 +12,17 @@ def start_server():
     routes = web.RouteTableDef()
 
     @routes.get('/api/admin/projects')
-    async def get_projects_for_admin():
+    async def get_projects_for_admin(request):
         projects = bl_funcs.get_projects()
         return web.Response(status=200, text=json.dumps({'projects': projects}))
 
     @routes.get('/api/projects')
-    async def get_all_projects():
-        project = db.Database.get_all_from('Project')
+    async def get_all_projects(request):
+        project = bl_funcs.get_projects()
         return web.Response(status=200, text=json.dumps({'projects': project}))
 
     @routes.get('/api/landing')
-    async def get_news():
+    async def get_news(request):
         news = db.Database.get_all_from('Article')
         parents = bl_funcs.get_photo_partners()
         return web.Response(status=200, text=json.dumps({'data': {'articles': news, 'parents': parents}}))

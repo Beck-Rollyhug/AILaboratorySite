@@ -2,7 +2,7 @@ import Header from "./UI/LandingHeader/Header";
 import Articles from "./UI/LandingArticles/Articles";
 import Partners from "./UI/LandingPartners/Partners";
 import Footer from "./UI/LandingFooter/Footer";
-import {useContext, useEffect} from "react";
+import {useContext} from "react";
 import {AuthContext} from "../context";
 import PostService from "../api/UserService";
 import {useNavigate} from "react-router-dom";

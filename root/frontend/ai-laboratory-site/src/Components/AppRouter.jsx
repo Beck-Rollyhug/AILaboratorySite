@@ -11,18 +11,17 @@ import Projects from "./Projects";
 import ProfileEdit from "./ProfileEdit";
 import ProjectPage from "./ProjectPage";
 import Navbar from "./UI/Navbar/Navbar";
-import {AuthContext} from "../context";
+import {AuthContext, UserContext} from "../context";
 
 
 const AppRouter = () => {
     const {isAuth, setIsAuth} = useContext(AuthContext);
-    const [user_id, setUserId] = useState();
 
-    const getUserId = (value) =>
+    /*const getUserId = (value) =>
     {
         setUserId(value);
-    }
-
+    }*/
+    /*const user_id = 18;*/
     /*console.log(isAuth)*/
 
     useEffect(() => {
@@ -38,21 +37,21 @@ const AppRouter = () => {
             <div>
                 <Navbar/>
                 <Routes>
-                    <Route path='/' element={<Landing userId={user_id}/>}/>
-                    <Route path='/profile' element={<Profile userId={user_id}/>}/>
-                    <Route path='/profile/edit' element={<ProfileEdit userId={user_id}/>}/>
-                    <Route path='/projects' element={<Projects userId={user_id}/>}/>
-                    <Route path='/projects/page' element={<ProjectPage userId={user_id}/>}/>
-                    <Route path='/contact_us' element={<ContactUs userId={user_id}/>}/>
-                    <Route path='/tech_support' element={<TechSupport userId={user_id}/>}/>
+                    <Route path='/' element={<Landing/>}/>
+                    <Route path='/profile' element={<Profile/>}/>
+                    <Route path='/profile/edit' element={<ProfileEdit/>}/>
+                    <Route path='/projects' element={<Projects/>}/>
+                    <Route path='/projects/page' element={<ProjectPage/>}/>
+                    <Route path='/contact_us' element={<ContactUs/>}/>
+                    <Route path='/tech_support' element={<TechSupport/>}/>
                     <Route path='*' element={<NotFound/>}/>
                 </Routes>
             </div>
             :
             <Routes>
-                <Route path='/' element={<Landing userId={user_id}/>}/>
-                <Route path='/login' element={<Login getUserId={getUserId}/>}/>
-                <Route path='/reg' element={<Reg getUserId={getUserId}/>}/>
+                <Route path='/' element={<Landing/>}/>
+                <Route path='/login' element={<Login/>}/>
+                <Route path='/reg' element={<Reg/>}/>
                 <Route path='*' element={<Login/>}/>
             </Routes>
     );

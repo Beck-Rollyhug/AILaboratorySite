@@ -1,6 +1,3 @@
-import {AuthContext} from "../context";
-import {useContext} from "react";
-
 export default class PostService {
     static async Check_uuid() {
         let response = await fetch('/api/check_uuid')

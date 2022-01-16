@@ -1,9 +1,11 @@
 import React, {useContext, useState} from 'react';
 import style from "./_delete_later/Login/login.module.css";
 import {Link} from "react-router-dom";
-import {AuthContext} from "../context";
+import {AuthContext, UserContext} from "../context";
 
 async function Auth(credentials) {
+    const {user_id, setUserId} = useContext(UserContext);
+
     let response = await fetch('/api/login',
         {
             method: 'POST',
@@ -13,11 +15,15 @@ async function Auth(credentials) {
             body: JSON.stringify(credentials)
         })
         .then(data => data.json());
-    console.log(response);
+    console.log(response.id);
+    if (response.status === 10)
+    {
+        setUserId(response.id);
+    }
     return response;
 }
 
-const Login = ({getUserId}) => {
+const Login = () => {
     const {isAuth, setIsAuth} = useContext(AuthContext);
 
     const [email, setEmail] = useState();
@@ -31,7 +37,7 @@ const Login = ({getUserId}) => {
                 'password': password
             }
         );
-        getUserId(response.id);
+        //getUserId(response.id);
         setIsAuth(true);
         localStorage.setItem('auth', 'true');
     }

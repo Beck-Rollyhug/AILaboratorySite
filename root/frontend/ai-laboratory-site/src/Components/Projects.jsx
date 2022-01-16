@@ -45,6 +45,7 @@ async function getProjects(credentials) {
     let response = await fetch('/api/projects')
         .then(data => data.json());
     console.log(response);
+    return response.projects;
 }
 
 const Projects = ({userId}) => {

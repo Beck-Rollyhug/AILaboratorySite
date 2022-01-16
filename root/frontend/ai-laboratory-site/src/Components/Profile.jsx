@@ -3,7 +3,7 @@ import {Link, useNavigate} from "react-router-dom";
 
 import './Styles/Profile.css'
 import ProjectCase from "./UI/ProjectCase/ProjectCase";
-import {AuthContext} from "../context";
+import {AuthContext, UserContext} from "../context";
 import PostService from "../api/UserService";
 
 const profile = {
@@ -37,23 +37,25 @@ async function GetProfile(userId) {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                'id': userId,
+                id: userId,
             })
         }
-    )
-        .then(data => data.json());
+    ).then(data => data.json());
     console.log(response);
 }
 
-const Profile = ({userId}) => {
+const Profile = () => {
     const {isAuth, setIsAuth} = useContext(AuthContext)
+    const {userId, setUserId} = useContext(UserContext);
     const navigate = useNavigate();
 
     const uuid = PostService.Check_uuid();
 
+
+    console.log(userId);
     const profile1 = GetProfile(userId);
 
-    if (uuid.status === 400)
+    if (uuid['status'] === 400)
     {
         setIsAuth(false);
         navigate('/login')

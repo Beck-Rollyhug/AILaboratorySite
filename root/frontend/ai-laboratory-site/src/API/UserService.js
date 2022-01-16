@@ -2,6 +2,13 @@ import {AuthContext} from "../context";
 import {useContext} from "react";
 
 export default class PostService {
+    static async Check_uuid() {
+        let response = await fetch('/api/check_uuid')
+            .then(data => data.json());
+        console.log(response);
+        return response;
+    }
+
     static async getAll(props) {
         const response = await fetch("/api/login",
             {

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Styles/ContactUs.css'
 
-const ContactUs = () => {
+const ContactUs = ({userId}) => {
     return (
         <main className="formSignin">
             <form>

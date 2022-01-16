@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Route, Routes} from "react-router-dom";
 import Profile from "./Profile";
 import NotFound from "./NotFound";
@@ -13,77 +13,24 @@ import ProjectPage from "./ProjectPage";
 import Navbar from "./UI/Navbar/Navbar";
 import {AuthContext} from "../context";
 
+
 const AppRouter = () => {
     const {isAuth, setIsAuth} = useContext(AuthContext);
-    console.log(isAuth)
+    const {user_id, setUserId} = useState();
+
+    let getUserId = (value) =>
+    {
+        setUserId(value);
+    }
+
+    /*console.log(isAuth)*/
 
     useEffect(() => {
         if(localStorage.getItem('auth')) {
             setIsAuth(true)
         }
+        setIsAuth(false)
     }, [])
-
-
-    const profile = {
-        full_name: 'Иванов Иван Иванович',
-        uni_name: 'УрФУ имени первого Президента России Б.Н.Ельцина',
-        study_program: 'Программная Инженерия',
-        study_year: '1',
-        study_group: 'РИ-290034',
-        email: 'email@mail.ru',
-        phone_number: '+79123459999',
-        other_contact: '@telegram_profile',
-        projects: [
-            {
-                id: '2',
-                title: 'Проект 2',
-                description: 'Описание 2',
-                manCountCurrent: '4',
-                users_limit: '5',
-                skills: [
-                    'skill 1',
-                    'skill 2'
-                ]
-            }
-        ]
-    }
-
-    const projects = [
-        {
-            id: '1',
-            title: 'Проект 1',
-            description: 'Описание 1',
-            manCountCurrent: '5',
-            users_limit: '5',
-            skills: [
-                'skill 1',
-                'skill 2',
-                'skill 3'
-            ]
-        },
-        {
-            id: '2',
-            title: 'Проект 2',
-            description: 'Описание 2',
-            manCountCurrent: '4',
-            users_limit: '5',
-            skills: [
-                'skill 1',
-                'skill 2'
-            ]
-        },
-        {
-            id: '3',
-            title: 'Проект 3',
-            description: 'Описание 3',
-            manCountCurrent: '3',
-            users_limit: '5',
-            skills: [
-                'skill 1'
-            ]
-        }
-    ]
-
 
     return (
         isAuth
@@ -91,21 +38,21 @@ const AppRouter = () => {
             <div>
                 <Navbar/>
                 <Routes>
-                    <Route path='/' element={<Landing/>}/>
-                    <Route path='/profile' element={<Profile profile={profile}/>}/>
-                    <Route path='/profile/edit' element={<ProfileEdit/>}/>
-                    <Route path='/projects' element={<Projects projects={projects}/>}/>
-                    <Route path='/projects/page' element={<ProjectPage/>}/>
-                    <Route path='/contact_us' element={<ContactUs/>}/>
-                    <Route path='/tech_support' element={<TechSupport/>}/>
+                    <Route path='/' element={<Landing userId={user_id}/>}/>
+                    <Route path='/profile' element={<Profile userId={user_id}/>}/>
+                    <Route path='/profile/edit' element={<ProfileEdit userId={user_id}/>}/>
+                    <Route path='/projects' element={<Projects userId={user_id}/>}/>
+                    <Route path='/projects/page' element={<ProjectPage userId={user_id}/>}/>
+                    <Route path='/contact_us' element={<ContactUs userId={user_id}/>}/>
+                    <Route path='/tech_support' element={<TechSupport userId={user_id}/>}/>
                     <Route path='*' element={<NotFound/>}/>
                 </Routes>
             </div>
             :
             <Routes>
-                <Route path='/' element={<Landing/>}/>
-                <Route path='/login' element={<Login/>}/>
-                <Route path='/reg' element={<Reg/>}/>
+                <Route path='/' element={<Landing userId={user_id}/>}/>
+                <Route path='/login' element={<Login getUserId={getUserId}/>}/>
+                <Route path='/reg' element={<Reg getUserId={getUserId}/>}/>
                 <Route path='*' element={<Login/>}/>
             </Routes>
     );

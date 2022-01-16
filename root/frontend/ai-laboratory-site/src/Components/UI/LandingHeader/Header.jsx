@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Header.css"
-import background from "../../img/boy_pic_original.jpg"
-import burger_menu from "../../img/burger-menu.png"
+import background from "../../../img/boy_pic_original.jpg"
+import burger_menu from "../../../img/burger-menu.png"
 import {Link} from "react-router-dom";
 
 const Header = () => {

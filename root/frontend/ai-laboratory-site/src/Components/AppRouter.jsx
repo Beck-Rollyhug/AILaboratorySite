@@ -18,7 +18,7 @@ const AppRouter = () => {
     const {isAuth, setIsAuth} = useContext(AuthContext);
     const {user_id, setUserId} = useState();
 
-    getUserId = (value) =>
+    let getUserId = (value) =>
     {
         setUserId(value);
     }
@@ -51,8 +51,8 @@ const AppRouter = () => {
             :
             <Routes>
                 <Route path='/' element={<Landing userId={user_id}/>}/>
-                <Route path='/login' element={<Login/>}/>
-                <Route path='/reg' element={<Reg/>}/>
+                <Route path='/login' element={<Login getUserId={getUserId}/>}/>
+                <Route path='/reg' element={<Reg getUserId={getUserId}/>}/>
                 <Route path='*' element={<Login/>}/>
             </Routes>
     );

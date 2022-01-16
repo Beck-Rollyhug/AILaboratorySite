@@ -14,9 +14,10 @@ async function Auth(credentials) {
         })
         .then(data => data.json());
     console.log(response);
+    return response;
 }
 
-const Login = () => {
+const Login = ({getUserId}) => {
     const {isAuth, setIsAuth} = useContext(AuthContext);
 
     const [email, setEmail] = useState();
@@ -24,12 +25,13 @@ const Login = () => {
 
     const HandleForm = async e => {
         e.preventDefault();
-        await Auth(
+        const response = await Auth(
             {
                 'email': email,
                 'password': password
             }
         );
+        getUserId(response.id);
         setIsAuth(true);
         localStorage.setItem('auth', 'true');
     }

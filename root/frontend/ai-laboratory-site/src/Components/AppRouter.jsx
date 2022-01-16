@@ -16,9 +16,9 @@ import {AuthContext} from "../context";
 
 const AppRouter = () => {
     const {isAuth, setIsAuth} = useContext(AuthContext);
-    const {user_id, setUserId} = useState();
+    const [user_id, setUserId] = useState();
 
-    let getUserId = (value) =>
+    const getUserId = (value) =>
     {
         setUserId(value);
     }

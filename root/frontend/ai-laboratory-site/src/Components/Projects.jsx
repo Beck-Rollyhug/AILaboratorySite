@@ -41,6 +41,12 @@ const projects = [
     }
 ]
 
+async function getProjects(credentials) {
+    let response = await fetch('/api/projects')
+        .then(data => data.json());
+    console.log(response);
+}
+
 const Projects = () => {
     const {isAuth, setIsAuth} = useContext(AuthContext);
     const navigate = useNavigate();
@@ -51,6 +57,9 @@ const Projects = () => {
         setIsAuth(false);
         navigate('/login')
     }
+
+    const projects1 = getProjects()
+    console.log(projects1)
 
     return (
         <div>

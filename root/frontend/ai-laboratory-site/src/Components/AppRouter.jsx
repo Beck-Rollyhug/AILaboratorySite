@@ -22,6 +22,7 @@ const AppRouter = () => {
         if(localStorage.getItem('auth')) {
             setIsAuth(true)
         }
+        setIsAuth(false)
     }, [])
 
     return (

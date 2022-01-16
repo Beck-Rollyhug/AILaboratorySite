@@ -1,3 +1,3 @@
-from Database.bl_funcs import *
+from backend_server import start_server
 
-print(del_user_on_project(14, 1))
+start_server()

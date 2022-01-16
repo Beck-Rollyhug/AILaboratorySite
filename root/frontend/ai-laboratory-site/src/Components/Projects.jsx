@@ -42,16 +42,15 @@ const projects = [
 ]
 
 const Projects = () => {
+    const uuid = PostService.Check_uuid();
     const {isAuth, setIsAuth} = useContext(AuthContext);
     const navigate = useNavigate();
-
-    const uuid = PostService.Check_uuid();
+    console.log(uuid.status);
     if (uuid.status === 400)
     {
         setIsAuth(false);
         navigate('/login')
     }
-
     return (
         <div>
             <section className="main-menu">

@@ -60,7 +60,6 @@ const Projects = () => {
 
     const projects1 = getProjects()
     console.log(projects1)
-
     return (
         <div>
             <section className="main-menu">

@@ -38,9 +38,9 @@ def start_server():
     @routes.post('/api/profile')
     async def get_user(request):
         # nginx
-        server_data = dict(await request.post())
+        # server_data = dict(await request.post())
         # nodeJS
-        # server_data = dict(await request.json())
+        server_data = dict(await request.json())
         user_id = server_data.get('id')
         if user_id:
             user_data = db.Database.find('Users', server_data)
@@ -58,13 +58,13 @@ def start_server():
         session['auth'] = f"{my_uuid}"
         uuids.append(session['auth'])
         # nginx
-        server_data = dict(await request.post())
+        # server_data = dict(await request.post())
         # nodeJS
-        # server_data = dict(await request.json())
+        server_data = dict(await request.json())
         login = server_data.get('email')
         password = server_data.get('password')
         if login and password:
-            user = db.Database.find('User', server_data)
+            user = db.Database.find('Users', server_data)
             if user:
                 user_data = user[0]
                 return web.Response(status=200, text=json.dumps({'id': user_data.get('id'), 'status': 10}))
@@ -73,9 +73,9 @@ def start_server():
     @routes.post('/api/reg')
     async def sign_in(request):
         # nginx
-        server_data = dict(await request.post())
+        # server_data = dict(await request.post())
         # nodeJS
-        # server_data = dict(await request.json())
+        server_data = dict(await request.json())
         login = server_data.get('email')
         password = server_data.get('password')
         full_name = server_data.get('full_name')
@@ -90,9 +90,9 @@ def start_server():
     @routes.post('/api/profile/settings')
     async def update_user(request):
         # nginx
-        server_data = dict(await request.post())
+        # server_data = dict(await request.post())
         # nodeJS
-        # server_data = dict(await request.json())
+        server_data = dict(await request.json())
         user_id = server_data.get('id')
         if db.Database.find('Users', {'id': user_id}):
             db.Database.update('Users', server_data)
@@ -102,9 +102,9 @@ def start_server():
     @routes.post('/api/project/project_entry')
     async def project_entry(request):
         # nginx
-        server_data = dict(await request.post())
+        # server_data = dict(await request.post())
         # nodeJS
-        # server_data = dict(await request.json())
+        server_data = dict(await request.json())
         user_id = server_data.get('user_id')
         project_id = server_data.get('project_io')
         if user_id and project_id:
@@ -115,9 +115,9 @@ def start_server():
     @routes.post('/api/article/update')
     async def update_new(request):
         # nginx
-        server_data = dict(await request.post())
+        # server_data = dict(await request.post())
         # nodeJS
-        # server_data = dict(await request.json())
+        server_data = dict(await request.json())
         article_id = server_data.get('id')
         if article_id:
             db.Database.update('Articles', server_data)
@@ -127,45 +127,45 @@ def start_server():
     @routes.post('/api/article/add')
     async def update_new(request):
         # nginx
-        server_data = dict(await request.post())
+        # server_data = dict(await request.post())
         # nodeJS
-        # server_data = dict(await request.json())
+        server_data = dict(await request.json())
         db.Database.add('Articles', server_data)
         return web.Response(status=200, text=json.dumps({'status': 200}))
 
     @routes.post('/api/article/delete')
     async def update_new(request):
         # nginx
-        server_data = dict(await request.post())
+        # server_data = dict(await request.post())
         # nodeJS
-        # server_data = dict(await request.json())
+        server_data = dict(await request.json())
         db.Database.delete('Articles', server_data)
         return web.Response(status=200, text=json.dumps({'status': 200}))
 
     @routes.post('/api/project/add')
     async def add_project(request):
         # nginx
-        server_data = dict(await request.post())
+        # server_data = dict(await request.post())
         # nodeJS
-        # server_data = dict(await request.json())
+        server_data = dict(await request.json())
         db.Database.add('Projects', server_data)
         return web.Response(status=200, text=json.dumps({'status': 200}))
 
-    @routes.post('/api/project/add')
+    @routes.post('/api/project/update')
     async def update_project(request):
         # nginx
-        server_data = dict(await request.post())
+        # server_data = dict(await request.post())
         # nodeJS
-        # server_data = dict(await request.json())
+        server_data = dict(await request.json())
         db.Database.update('Projects', server_data)
         return web.Response(status=200, text=json.dumps({'status': 200}))
 
-    @routes.post('/api/project/add')
+    @routes.post('/api/project/delete')
     async def delete_project(request):
         # nginx
-        server_data = dict(await request.post())
+        # server_data = dict(await request.post())
         # nodeJS
-        # server_data = dict(await request.json())
+        server_data = dict(await request.json())
         db.Database.delete('Projects', server_data)
         return web.Response(status=200, text=json.dumps({'status': 200}))
 

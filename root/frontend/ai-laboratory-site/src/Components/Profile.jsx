@@ -31,9 +31,7 @@ const profile = {
 }
 
 async function GetProfile(userId) {
-    let response = await fetch('/api/profile',
-        [
-            {
+    let response = await fetch('/api/profile', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -42,7 +40,7 @@ async function GetProfile(userId) {
                 'id': userId,
             })
         }
-    ])
+    )
         .then(data => data.json());
     console.log(response);
 }

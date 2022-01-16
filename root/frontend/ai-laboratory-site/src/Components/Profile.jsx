@@ -1,10 +1,47 @@
-import React from 'react';
-import {Link} from "react-router-dom";
+import React, {useContext} from 'react';
+import {Link, useNavigate} from "react-router-dom";
 
 import './Styles/Profile.css'
 import ProjectCase from "./UI/ProjectCase/ProjectCase";
+import {AuthContext} from "../context";
+import PostService from "../api/UserService";
 
-const Profile = ({profile}) => {
+const profile = {
+    full_name: 'Иванов Иван Иванович',
+    uni_name: 'УрФУ имени первого Президента России Б.Н.Ельцина',
+    study_program: 'Программная Инженерия',
+    study_year: '1',
+    study_group: 'РИ-290034',
+    email: 'email@mail.ru',
+    phone_number: '+79123459999',
+    other_contact: '@telegram_profile',
+    projects: [
+        {
+            id: '2',
+            title: 'Проект 2',
+            description: 'Описание 2',
+            manCountCurrent: '4',
+            users_limit: '5',
+            skills: [
+                'skill 1',
+                'skill 2'
+            ]
+        }
+    ]
+}
+
+const Profile = () => {
+    const {isAuth, setIsAuth} = useContext(AuthContext)
+    const navigate = useNavigate();
+
+    const uuid = PostService.Check_uuid();
+    if (uuid.status === 400)
+    {
+        setIsAuth(false);
+        navigate('/login')
+    }
+
+
     const study_info = profile.uni_name + '\n' +
                         profile.study_program + ', ' +
                         profile.study_year + 'й курс, ' +

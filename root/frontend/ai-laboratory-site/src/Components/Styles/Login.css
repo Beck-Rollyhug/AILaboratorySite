@@ -1,24 +1,188 @@
 body {
-    min-width: 1000px;
-    font-family: 'Open Sans', Roboto, Arial, sans-serif;
-    font-size: 16px;
-    line-height: 24px;
+    display: flex;
+    flex-direction: column;
     margin: 0;
-    padding: 0;
-    background-color: #fff;
-    text-decoration: none;
 }
 
-.bordered {
-    margin-left: 800px;
-    width: 18rem;
-    border: 1px solid #010101;
-    border-radius: 10px;
-    padding: 1rem;
+html, body {
+    height: 100%;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+header {
+    align-self: flex-start;
+    width: 100%;
+    margin-bottom: 8%;
+}
+
+.containerHeader {
+    width: 67%;
+    margin-top: 9%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.formSignin {
+    width: 100%;
+    max-width: 340px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 599px) {
+    .formSignin {
+        max-width: 320px;
+    }
+    .logoMenu {
+        width: 70%;
+        height: 70%;
+    }
+}
+
+@media  (max-width: 559px) {
+    .containerHeader {
+        width: 100%;
+        margin-top: 0;
+    }
+    header {
+        margin-bottom: 22%;
+    }
+}
+
+@media (max-width: 414px) {
+    .formSignin {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 355px) {
+    .formSignin {
+        max-width: 270px;
+    }
+    .btn {
+        max-width: 100px;
+    }
+}
+
+@media (max-width: 314px) {
+    .formSignin {
+        max-width: 250px;
+    }
+    .btn {
+        max-width: 90px;
+    }
+    .btn, .link {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 280px) {
+    .formSignin {
+        max-width: 230px;
+    }
+}
+
+form {
+    text-align: center;
+}
+
+.logoMenu {
+    margin-bottom: 10px;
+}
+
+.title {
+    font-family: Open Sans, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 25px;
+    text-align: center;
+    letter-spacing: -0.04em;
+    color: #4A83B8;
+
+    margin: 0 0 20px 0;
+}
+
+.formFloating {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    letter-spacing: -0.04em;
+    font-feature-settings: 'kern' off;
+    color: #8E8E8E;
 }
 
 input {
-    width: 10rem;
-    height: 2rem;
-    margin: 1rem;
+    padding: 12px 26px;
+    border: none;
+    margin-bottom: 10px;
+}
+
+input:focus {
+    outline: none;
+}
+
+input[class="formControl"] {
+    background: #EAEAEA;
+    border-radius: 10px;
+    width: 100%;
+    border: none;
+    color: #151515;
+}
+
+input[type="password"] {
+    margin-bottom: 20px;
+}
+
+.formControl {
+    background: #EAEAEA;
+    border-radius: 10px;
+}
+
+.btn {
+    box-sizing: content-box;
+    width: 150px;
+    padding: 12px 17px;
+    background: #4A83B8;
+    color: #fff;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 23px;
+}
+
+.btn:hover {
+    background: #4173a1;
+    color: rgba(255, 255, 255, 0.91);
+}
+
+.btn:active {
+    background: #386895;
+}
+
+.linkReg {
+    text-decoration: none;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    text-align: center;
+    color: #4A83B8;
+    display: flex;
+    justify-content: center;
+}
+
+.linkReg:hover {
+    text-decoration: underline;
+}
+
+.linkReg:active {
+    color: #296194;
+    text-decoration: none;
 }

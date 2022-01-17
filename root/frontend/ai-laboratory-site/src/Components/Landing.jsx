@@ -3,10 +3,10 @@ import Articles from "./UI/LandingArticles/Articles";
 import Partners from "./UI/LandingPartners/Partners";
 import Footer from "./UI/LandingFooter/Footer";
 import {useContext} from "react";
-import {AuthContext} from "../context";
 import PostService from "../api/UserService";
 import {useNavigate} from "react-router-dom";
 import Robot from "../img/robot_original.jpg";
+/*import {Context} from "../index";*/
 
 const landing = {
     articles: [
@@ -36,20 +36,20 @@ const landing = {
     ]
 }
 
-const Landing = ({userId}) => {
-    const {isAuth, setIsAuth} = useContext(AuthContext)
+const Landing = () => {
+    /*const {user} = useContext(Context);*/
     const navigate = useNavigate();
 
     const uuid = PostService.Check_uuid();
     if (uuid.status === 400)
     {
-        setIsAuth(false);
+        /*user.setIsAuth(false);*/
         navigate('/login')
     }
 
     return (
         <div>
-            <h1>Is Auth: {isAuth}</h1>
+            {{/*<h1>Is Auth: {user.isAuth}</h1>*/}}
             <Header />
             <Articles articles={landing.articles}/>
             <Partners partners={landing.partners}/>

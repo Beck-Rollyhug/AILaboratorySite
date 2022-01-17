@@ -1,11 +1,10 @@
 import React, {useContext, useState} from 'react';
 import style from "./_delete_later/Login/login.module.css";
-import {Link} from "react-router-dom";
-import {AuthContext, UserContext} from "../context";
+import {Link, useHistory} from "react-router-dom";
+import {Context} from "../index";
+import {observer} from "mobx-react-lite";
 
 async function Auth(credentials) {
-    const {user_id, setUserId} = useContext(UserContext);
-
     let response = await fetch('/api/login',
         {
             method: 'POST',
@@ -16,51 +15,60 @@ async function Auth(credentials) {
         })
         .then(data => data.json());
     console.log(response.id);
-    if (response.status === 10)
-    {
-        setUserId(response.id);
-    }
     return response;
 }
 
-const Login = () => {
-    const {isAuth, setIsAuth} = useContext(AuthContext);
-
+const Login = observer(() => {
+    /*const {user} = useContext(Context);*/
+    /*const history = useHistory();*/
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
 
     const HandleForm = async e => {
-        e.preventDefault();
+        /*e.preventDefault();*/
         const response = await Auth(
             {
                 'email': email,
                 'password': password
             }
         );
-        //getUserId(response.id);
-        setIsAuth(true);
-        localStorage.setItem('auth', 'true');
+        if (response.status === 10)
+        {
+            console.log('user founded')
+            const id = response.id;
+            /*user.setUser({id});
+            console.log(user);*/
+            /*alert(document.cookie)*/
+            /*user.setIsAuth(true);*/
+            localStorage.setItem('auth', 'true');
+            /*history.push('/projects');*/
+        }
     }
     return (
         <div>
-            <h1>Login</h1>
-            <form className={ style.bordered }>
-                <label>
-                    <p>Почта:</p>
-                    <input name='email' type='text' onChange={event => setEmail(event.target.value)}/>
-                </label>
-                <label>
-                    <p>Пароль:</p>
-                    <input name='pass' type='text' onChange={event => setPassword(event.target.value)}/>
-                </label>
-                <button onClick={HandleForm} value={"Login"}>Войти{/*<Link to="/projects">Login</Link>*/}</button>
-            </form>
-
-            <div>
-                <Link to="/reg">Создать новый аккаунт</Link>
-            </div>
+            <header>
+                <div className="containerHeader">
+                    {/*<button type="button" style={"width: 40px; height: 30px;"}></button>*/}
+                </div>
+            </header>
+            <main className="formSignin">
+                <form>
+                    <img className="logoMenu" src="img-ds/IIS%20logo.png" alt="iis-logo"/>
+                        <h2 className="title">Авторизация</h2>
+                        <div className="formFloating">
+                            <input type="email" className="formControl" id="floatingInput" placeholder="Почта..."/>
+                            {{/*<label htmlFor="floatingInput"></label>*/}}
+                        </div>
+                        <div className="formFloating">
+                            <input type="password" className="formControl" id="floatingPassword" placeholder="Пароль..."/>
+                            {{/*<label htmlFor="floatingPassword"></label>*/}}
+                        </div>
+                        <button className="btn" type="submit">ВОЙТИ</button>
+                        <Link className="linkReg" to="/reg">Регистрация</Link>
+                </form>
+            </main>
         </div>
     );
-};
+});
 
 export default Login;

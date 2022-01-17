@@ -1,14 +1,13 @@
 import React, {useContext} from 'react';
 import './Navbar.css'
 import {Link} from "react-router-dom";
-//import n from "../../HeaderOfWorkPage/headerOfWorkPage.module.css";
 import iisLogo from "../../../img/IIS logo.png";
-import {AuthContext} from "../../../context";
+/*import {Context} from "../../../index";*/
 
 const Navbar = () => {
-    const {isAuth, setIsAuth} = useContext(AuthContext)
+    /*const {user} = useContext(Context);*/
     const logout = () => {
-        setIsAuth(false);
+        /*user.setIsAuth(false);*/
         localStorage.removeItem('auth');
     }
     return (

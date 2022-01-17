@@ -66,6 +66,11 @@ p {
     padding: 6px 16px;
 }
 
+.skillCase {
+    background: #4A83B8;
+    border-radius: 5px;
+}
+
 .PostreSQL {
     background: #45ADCE;
     border-radius: 5px;

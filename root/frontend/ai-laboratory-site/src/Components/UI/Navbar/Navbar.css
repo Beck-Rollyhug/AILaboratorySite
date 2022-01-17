@@ -1,14 +1,3 @@
-body {
-    margin: 0;
-    padding: 0;
-}
-
-*,
-*:before,
-*:after {
-    box-sizing: border-box;
-}
-
 header {
     margin: 150px 0 0 0;
     padding: 0;
@@ -20,6 +9,7 @@ header {
     position: fixed;
     top: 0;
     height: 100px;
+    width: 100%;
     display: flex;
     padding: 10px 5%;
     flex: 1 0 auto;

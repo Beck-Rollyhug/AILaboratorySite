@@ -8,16 +8,18 @@ import ProjectsStore from "./store/ProjectsStore"
 import LandingStore from "./store/LandingStore"
 
 
-export const Context = createContext(null);
+/*<Context.Provider value={{
+            user: new UserStore(),
+            projects: new ProjectsStore(),
+            landing: new LandingStore(),
+        }}>*/
+
+/*</Context.Provider>,*/
+
+/*export const Context = createContext(null);*/
 
 ReactDOM.render(
-    <Context.Provider value={{
-        user: new UserStore(),
-        projects: new ProjectsStore(),
-        landing: new LandingStore(),
-    }}>
-        <App/>
-    </Context.Provider>,
+            <App/>,
   document.getElementById('root')
 );
 

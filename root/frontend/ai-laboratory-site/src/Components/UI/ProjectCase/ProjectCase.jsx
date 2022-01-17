@@ -10,9 +10,11 @@ const ProjectCase = ({project}) => {
                 <h2>{project.title}</h2>
                 <p className="description">{project.description}</p>
                 <div className="footerTitle">
-                    {project.skills.map(skill =>
-                        <span className="PostreSQL" key={skill.id}>{skill.name}</span>
-                    )}
+                    <div className="skills">
+                        {project.skills.map(skill =>
+                            <span className="skillCase" key={skill.id}>{skill.name}</span>
+                        )}
+                    </div>
                     <div className="manCount">{project.manCountCurrent} / {project.users_limit}</div>
                 </div>
             </Link>

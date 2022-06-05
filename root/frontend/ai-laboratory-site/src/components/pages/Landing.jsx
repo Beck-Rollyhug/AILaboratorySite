@@ -1,11 +1,11 @@
-import Header from "./UI/LandingHeader/Header";
-import Articles from "./UI/LandingArticles/Articles";
-import Partners from "./UI/LandingPartners/Partners";
-import Footer from "./UI/LandingFooter/Footer";
-import {useContext} from "react";
-import PostService from "../api/UserService";
-import {useNavigate} from "react-router-dom";
-import Robot from "../img/robot_original.jpg";
+import Header from "../UI/LandingHeader/Header";
+import Articles from "../UI/LandingArticles/Articles";
+import Partners from "../UI/LandingPartners/Partners";
+import Footer from "../UI/LandingFooter/Footer";
+//import {useContext} from "react";
+import PostService from "../../api/UserService";
+//import {useNavigate} from "react-router-dom";
+import Robot from "../../img/robot_original.jpg";
 /*import {Context} from "../index";*/
 
 const landing = {
@@ -38,22 +38,23 @@ const landing = {
 
 const Landing = () => {
     /*const {user} = useContext(Context);*/
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
     const uuid = PostService.Check_uuid();
     if (uuid.status === 400)
     {
         /*user.setIsAuth(false);*/
-        navigate('/login')
+        //navigate('/login')
     }
 
     return (
         <div>
-            {{/*<h1>Is Auth: {user.isAuth}</h1>*/}}
+            Landing 1
+            {/*<h1>Is Login: {user.isAuth}</h1>
             <Header />
             <Articles articles={landing.articles}/>
             <Partners partners={landing.partners}/>
-            <Footer />
+            <Footer />*/}
         </div>
     )
 }

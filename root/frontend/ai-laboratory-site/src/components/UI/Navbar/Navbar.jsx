@@ -17,7 +17,7 @@ const Navbar = () => {
                     <div className="flexContainer">
                         <Link className="navLink" to={'/'}>Главная</Link>
                         <Link className="navLink" to={'/projects'}>Проекты</Link>
-                        <Link className="navLink" to={'/profile'}>Профиль</Link>
+                        <Link className="navLink" to={'/profile/1'}>Профиль</Link>
                     </div>
                     <div className="flexContainer">
                         <img className="logo-IIS" src={iisLogo} alt={'logo'}/>

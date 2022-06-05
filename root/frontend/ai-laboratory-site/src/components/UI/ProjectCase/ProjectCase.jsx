@@ -15,7 +15,7 @@ const ProjectCase = ({project}) => {
                             <span className="skillCase" key={skill.id}>{skill.name}</span>
                         )}
                     </div>
-                    <div className="manCount">{project.manCountCurrent} / {project.users_limit}</div>
+                    <div className="manCount">{project.users_count} / {project.users_limit}</div>
                 </div>
             </Link>
         </div>

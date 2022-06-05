@@ -1,9 +1,11 @@
 import React from 'react';
-import './Styles/TechSupport.css'
+import '../styles/TechSupport.css'
 
-const TechSupport = ({userId}) => {
+const TechSupport = () => {
     return (
         <main className="formSignin">
+            Tech support
+            {/*
             <form>
                 <div className="formFloating">
                     <input className="formControl" type="text" id="floatingName" placeholder="Тема..."/>
@@ -12,7 +14,7 @@ const TechSupport = ({userId}) => {
                     <textarea name="msg" placeholder="Текст..."></textarea>
                 </div>
                 <button className="btnn" type="submit">ОТПРАВИТЬ</button>
-            </form>
+            </form>*/}
         </main>
     );
 };

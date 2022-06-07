@@ -1,0 +1,52 @@
+header {
+    margin: 150px 0 0 0;
+    padding: 0;
+    width: 100%;
+    min-width: 1000px;
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    height: 100px;
+    width: 100%;
+    display: flex;
+    padding: 10px 5%;
+    flex: 1 0 auto;
+    align-items: center;
+    gap: 1.5rem;
+    background-color: #2E5376;
+    z-index: 1;
+}
+
+.flexContainer {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    width: 100%;
+}
+
+.flexContainer:last-child {
+    justify-content: flex-end;
+}
+
+.navLink {
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    letter-spacing: -0.04em;
+    color: white;
+    background-color: transparent;
+}
+
+.containerTop {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.logo-IIS {
+    max-width: 177px;
+    margin-left: auto;
+    margin-right: auto;
+}

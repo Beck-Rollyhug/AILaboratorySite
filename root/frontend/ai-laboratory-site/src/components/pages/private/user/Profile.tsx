@@ -1,18 +1,18 @@
-import '../styles/Profile.css'
+import '../../../styles/Profile.css'
 
-import React, {useContext} from 'react';
-import {Link, useNavigate} from "react-router-dom";
+import React, {FC} from 'react';
+import {Link, useParams} from "react-router-dom";
 
-import ProjectCase from "../UI/ProjectCase/ProjectCase";
-import {AuthContext, UserContext} from "../../context";
-import PostService from "../../api/UserService";
+import ProjectCase from "../../../UI/ProjectCase/ProjectCase";
+//import {AuthContext, UserContext} from "../../context";
+//import PostService from "../../api/UserService";
 
 const profile = {
     full_name: 'Иванов Иван Иванович',
     study_info: {
         uni_name: 'УрФУ имени первого Президента России Б.Н.Ельцина',
         study_program: 'Программная Инженерия',
-        study_year: '1',
+        study_year: '2',
         study_group: 'РИ-290034'
     },
     contacts: {
@@ -60,8 +60,15 @@ async function GetProfile(userId) {
     console.log(response);
 }*/
 
-const Profile = () => {
-    /*const {isAuth, setIsAuth} = useContext(AuthContext)
+type ProfileParams = {
+    id: string;
+}
+
+const Profile: FC = () => {
+    const { id } = useParams<ProfileParams['id']>();
+    console.log(id);
+    /*
+    const {isAuth, setIsAuth} = useContext(AuthContext)
     const {userId, setUserId} = useContext(UserContext);
     //const navigate = useNavigate();
 
@@ -75,13 +82,6 @@ const Profile = () => {
         //setIsAuth(false);
         //navigate('/login')
     }
-
-
-    const study_info = profile.uni_name + '\n' +
-                        profile.study_program + ', ' +
-                        profile.study_year + 'й курс, ' +
-                        profile.study_group
-    const projects = profile.projects;
     */
     return (
         <div>
@@ -89,14 +89,18 @@ const Profile = () => {
                 <div className="containerMenu">
                     <div className="userProfile">
                         <h1 className="name">{profile.full_name}</h1>
+                        <p>{profile.study_info.uni_name + ', ' +
+                        profile.study_info.study_program + ', ' +
+                        profile.study_info.study_year + ' курс , ' +
+                        profile.study_info.study_group}</p>
                         <p>Почта: {profile.contacts.email}</p>
                         <p>Телефон: {profile.contacts.phone_number}</p>
                         <p>{profile.contacts.other_contact}</p>
-                        <Link className="btnn" to="/profile/edit">НАСТРОИТЬ</Link>
+                        <Link className="btnn" to="/user/:id/profile_edit">Настроить</Link>
                     </div>
-                    <h2 className="listFullProjects">ПРОЕКТЫ</h2>
+                    <h2 className="listFullProjects">Проекты</h2>
                     <div className="projects-panel">
-                        <Link to="/projects/page">
+                        <Link to="/project/:id">
                             {profile.projects.map(project =>
                                 <ProjectCase project={project} key={project.id}/>
                             )}

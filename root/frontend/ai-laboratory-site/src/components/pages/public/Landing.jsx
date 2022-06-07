@@ -1,11 +1,14 @@
-import Header from "../UI/LandingHeader/Header";
-import Articles from "../UI/LandingArticles/Articles";
-import Partners from "../UI/LandingPartners/Partners";
-import Footer from "../UI/LandingFooter/Footer";
+import Header from "../../UI/LandingHeader/Header";
+import Articles from "../../UI/LandingArticles/Articles";
+import Partners from "../../UI/LandingPartners/Partners";
+import Footer from "../../UI/LandingFooter/Footer";
 //import {useContext} from "react";
-import PostService from "../../api/UserService";
+import PostService from "../../../api/UserService";
 //import {useNavigate} from "react-router-dom";
-import Robot from "../../img/robot_original.jpg";
+import Robot from "../../../img/robot_original.jpg";
+import {Link} from "react-router-dom";
+import React from "react";
+import {useAuth} from "../../hooks/useAuth";
 /*import {Context} from "../index";*/
 
 const landing = {
@@ -40,6 +43,7 @@ const Landing = () => {
     /*const {user} = useContext(Context);*/
     //const navigate = useNavigate();
 
+    const auth = useAuth();
     const uuid = PostService.Check_uuid();
     if (uuid.status === 400)
     {
@@ -49,7 +53,9 @@ const Landing = () => {
 
     return (
         <div>
-            Landing 1
+            <Link className="link" to="/user/:id/profile">Профиль</Link>
+            <Link className="link" to="/login">Войти</Link>
+            <Link className="link" to="/reg">Регистрация</Link>
             {/*<h1>Is Login: {user.isAuth}</h1>
             <Header />
             <Articles articles={landing.articles}/>

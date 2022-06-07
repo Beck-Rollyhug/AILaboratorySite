@@ -1,8 +1,8 @@
 //import Login from "../Login/login.jsx";
 //import Reg from "../Registration/reg.jsx";
-import Profile from "../pages/Profile";
-import Projects from "../pages/Projects";
-import NotFound from "../pages/NotFound";
+import Profile from "../pages/private/user/Profile";
+import Projects from "../pages/private/user/Projects";
+import NotFound from "../pages/system/NotFound";
 
 export const routes = [
     {path: '/', component: Profile, exact: true},

@@ -5,9 +5,9 @@ const SearchBar = () => {
     return (
         <div className="searching">
             <div className="searchBar">
-                <button className="navbarToggler" id="filter" type="button">
+                <div className="navbarToggler" id="filter" type="button">
                     <span className="navbarTogglerIcon"></span>
-                </button>
+                </div>
                 <input type="text" className="searchProject" placeholder="Найти проект..."/>
             </div>
             <div className="searchAdd" id="text">

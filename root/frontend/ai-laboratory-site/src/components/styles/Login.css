@@ -15,7 +15,7 @@ html, body {
 }
 
 header {
-    align-self: flex-start;
+    /*align-self: flex-start;*/
     width: 100%;
     margin-bottom: 8%;
 }
@@ -25,10 +25,11 @@ header {
     margin-top: 9%;
     margin-left: auto;
     margin-right: auto;
+    text-align: left;
 }
 
 .formSignin {
-    width: 100%;
+    width: 100vw;
     max-width: 340px;
     text-align: center;
     margin-left: auto;
@@ -89,6 +90,7 @@ header {
 }
 
 form {
+    margin-top: 20vh;
     text-align: center;
 }
 
@@ -116,13 +118,14 @@ form {
     font-size: 14px;
     letter-spacing: -0.04em;
     font-feature-settings: 'kern' off;
-    color: #8E8E8E;
+    color: #0c0c0c;
+    padding: 0px;
+    margin-bottom: 10px;
 }
 
 input {
     padding: 12px 26px;
     border: none;
-    margin-bottom: 10px;
 }
 
 input:focus {
@@ -134,11 +137,13 @@ input[class="formControl"] {
     border-radius: 10px;
     width: 100%;
     border: none;
-    color: #151515;
+    color: #0c0c0c;
+    padding: 0px;
+    margin-bottom: 0px;
 }
 
 input[type="password"] {
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 .formControl {
@@ -152,9 +157,10 @@ input[type="password"] {
     padding: 12px 17px;
     background: #4A83B8;
     color: #fff;
+    font-size: 16px;
     border-radius: 10px;
     border: none;
-    margin-bottom: 23px;
+    margin-bottom: 20px;
 }
 
 .btn:hover {
@@ -171,11 +177,12 @@ input[type="password"] {
     font-family: Roboto, sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 16px;
     text-align: center;
     color: #4A83B8;
     display: flex;
     justify-content: center;
+    margin-bottom: 10px;
 }
 
 .linkReg:hover {

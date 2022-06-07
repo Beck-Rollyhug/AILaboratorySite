@@ -89,7 +89,11 @@ header {
 }
 
 form {
-    text-align: center;
+     text-align: center;
+}
+
+.check_align {
+    text-align: left;
 }
 
 .logoMenu {
@@ -113,7 +117,7 @@ form {
     font-family: Roboto, sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 16px;
     letter-spacing: -0.04em;
     font-feature-settings: 'kern' off;
     color: #8E8E8E;
@@ -149,6 +153,7 @@ input:focus {
     background: #4A83B8;
     color: #fff;
     border-radius: 10px;
+    font-size: 16px;
     border: none;
     margin-bottom: 23px;
 }
@@ -167,7 +172,7 @@ input:focus {
     font-family: Roboto, sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 16px;
     text-align: center;
     color: #4A83B8;
     display: flex;

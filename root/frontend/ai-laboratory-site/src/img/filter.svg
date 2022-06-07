@@ -1,0 +1,8 @@
+<svg width="30" height="27" viewBox="0 0 30 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="5" y="22" width="25" height="3" rx="1.5" fill="#BEBEBE"/>
+<rect y="12" width="30" height="3" rx="1.5" fill="#BEBEBE"/>
+<rect y="2" width="30" height="3" rx="1.5" fill="#BEBEBE"/>
+<rect x="17.5" y="20.5" width="6" height="6" rx="1.5" fill="white" stroke="#BEBEBE"/>
+<rect x="5.5" y="10.5" width="6" height="6" rx="1.5" fill="white" stroke="#BEBEBE"/>
+<rect x="17.5" y="0.5" width="6" height="6" rx="1.5" fill="white" stroke="#BEBEBE"/>
+</svg>

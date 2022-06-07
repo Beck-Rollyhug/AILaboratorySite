@@ -1,6 +1,8 @@
 import React from 'react';
-//import './styles/Login.css'
-//import {Link, useHistory} from "react-router-dom";
+import '../../styles/Login.css'
+import iisLogo from "../../../img/IIS_logo.jpg";
+import {Link, useHistory, useNavigate, useLocation} from "react-router-dom";
+import {useAuth} from "../../hooks/useAuth";
 //import {observer} from "mobx-react-lite";
 
 /*
@@ -19,11 +21,25 @@ async function Login(credentials) {
 }*/
 
 const Login = () => {
-    /*const {user} = useContext(Context);*/
-    /*const history = useHistory();*/
-    //const [email, setEmail] = useState();
-    //const [password, setPassword] = useState();
-    /*
+    const navigate = useNavigate();
+    const location = useLocation();
+    const {sign_in} = useAuth();
+
+    const fromPage = location.state?.from?.pathname || '/user/:id/projects'
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const user = form.email.value; // Для валидации
+
+        sign_in(user, () => navigate(fromPage, {replace: true}));
+    }
+
+    /*const {user} = useContext(Context);
+    const history = useHistory();
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+
     const HandleForm = async e => {
 
         e.preventDefault();
@@ -47,18 +63,13 @@ const Login = () => {
     }*/
     return (
         <div className="formSignin">
-            Login
-            {/*<header>
-            <div className="containerHeader">
-                <button type="button" style={"width: 40px; height: 30px;"}></button>
-            </div>
-            </header>
-             <form>
-                <img className="logoMenu" src="img-ds/IIS%20logo.png" alt="iis-logo"/>
+             <form onSubmit={handleSubmit}>
+                <img className="logoMenu" src={iisLogo} alt="iis-logo"/>
                 <h2 className="title">Авторизация</h2>
                 <div className="formFloating">
                     <input
                         type="email"
+                        name={'email'}
                         className="formControl"
                         id="floatingInput"
                         placeholder="Почта..."/>
@@ -72,10 +83,10 @@ const Login = () => {
                         placeholder="Пароль..."/>
                     <label htmlFor="floatingPassword"></label>
                 </div>
-                <button className="btn" type="submit">ВОЙТИ</button>
-                <Link className="linkReg" to="/reg">Регистрация</Link>
+                <button className="btn" type="submit">Войти</button>
+                 <Link className="linkReg" to="/reg">Регистрация</Link>
+                 <Link className="linkReg" to="/">На главную</Link>
             </form>
-            */}
         </div>
     );
 };

@@ -6,12 +6,12 @@ const ProjectPage = () => {
         <div className="containerMenu">
             <div className="projectsPanel">
                 <div className="project">
-                    <h2>Разработка динамической карты погоды на 3D-модели Земли</h2>
+                    <h2 className={'projectPage'}>Разработка динамической карты погоды на 3D-модели Земли</h2>
                     <p className="description">В данном проекте нужно связать нашу БД с заготовленной 3D-моделю Земли,
                         чтобы отображать на ней облачность, температуру и осадки.</p>
                     <div className="fullDesc">
                         <div className="descCard">
-                            <h3 className="fullDescTitle">От нас</h3>
+                            <h3 className="fullDescTitle projectPage">От нас</h3>
                             <ul>
                                 <li className="flexString">
                                     <img src="img-ds/Component%201.svg" alt="icon"/>
@@ -28,7 +28,7 @@ const ProjectPage = () => {
                             </ul>
                         </div>
                         <div className="descCard">
-                            <h3 className="fullDescTitle">Что нужно сделать?</h3>
+                            <h3 className="fullDescTitle projectPage">Что нужно сделать?</h3>
                             <ul>
                                 <li className="flexString">
                                     <img src="img-ds/Component%201.svg" alt="icon"/>
@@ -46,7 +46,7 @@ const ProjectPage = () => {
                         </div>
                     </div>
                     <div className="contacts">
-                        <h3>
+                        <h3 className={'projectPage'}>
                             <p>Контакты<br/>
                             Олег Глухих: email@mail.ru</p>
                         </h3>

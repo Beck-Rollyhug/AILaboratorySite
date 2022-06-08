@@ -18,6 +18,7 @@ import GeneralSettings from "./pages/private/admin/GeneralSettings";
 import {RequireAuth} from "./hoc/RequireAuth";
 import Navbar from "./UI/Navbar/Navbar";
 import {AuthProvider} from "./hoc/AuthProvider";
+import AdminNavbar from './UI/admin_navbar/admin_navbar'
 
 
 const AppRouter = () => {
@@ -97,14 +98,54 @@ const AppRouter = () => {
                         }/>
                 </Route>
                 <Route path={'/admin/:id'}>
-                    <Route path='landing_settings' element={<ManageProjects/>}/>
-                    <Route path='users_manager' element={<UsersManager/>}/>
-                    <Route path='projects_manager' element={<ManageProjects/>}/>
-                    <Route path='project_page/:project_id' element={<ManageProjects/>}/>
-                    <Route path='project_editor/:project_id' element={<ManageProjects/>}/>
-                    <Route path='project_creator' element={<ManageProjects/>}/>
-                    <Route path='profile' element={<AdminProfile/>}/>
-                    <Route path='general_settings' element={<GeneralSettings/>}/>
+                    <Route path='landing_settings' element={
+                        <RequireAuth>
+                            <AdminNavbar/>
+                            <ManageProjects/>
+                        </RequireAuth>
+                    }/>
+                    <Route path='users_manager' element={
+                        <RequireAuth>
+                            <AdminNavbar/>
+                            <UsersManager/>
+                        </RequireAuth>
+                    }/>
+                    <Route path='projects_manager' element={
+                        <RequireAuth>
+                            <AdminNavbar/>
+                            <ManageProjects/>
+                        </RequireAuth>}
+                    />
+                    <Route path='project_page/:project_id' element={
+                        <RequireAuth>
+                            <AdminNavbar/>
+                            <ManageProjects/>
+                        </RequireAuth>
+                        }/>
+                    <Route path='project_editor/:project_id' element={
+                        <RequireAuth>
+                            <AdminNavbar/>
+                            <ManageProjects/>
+                        </RequireAuth>
+                        }/>
+                    <Route path='project_creator' element={
+                        <RequireAuth>
+                            <AdminNavbar/>
+                            <ManageProjects/>
+                        </RequireAuth>
+                        }/>
+                    <Route path='profile' element={
+                        <RequireAuth>
+                            <AdminNavbar/>
+                            <AdminProfile/>
+                        </RequireAuth>
+                        }/>
+                    <Route path='general_settings' element={
+                        <RequireAuth>
+                            <AdminNavbar/>
+                            <GeneralSettings/>
+                        </RequireAuth>
+                        }/>
                 </Route>
                 <Route path='*' element={<NotFound/>}/>
             </Routes>

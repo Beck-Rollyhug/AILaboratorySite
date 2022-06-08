@@ -1,11 +1,11 @@
-header {
+header .naviHead {
     margin: 150px 0 0 0;
     padding: 0;
     width: 100%;
     min-width: 1000px;
 }
 
-.nav {
+.navi {
     position: fixed;
     top: 0;
     height: 100px;
@@ -30,7 +30,7 @@ header {
     justify-content: flex-end;
 }
 
-.navLink {
+.naviLink {
     font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-weight: normal;

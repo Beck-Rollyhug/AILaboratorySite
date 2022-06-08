@@ -119,7 +119,7 @@ const Projects: FC = () => {
                     <SearchBar/>
                     <div className="projectsPanel">
                         {projects.map(project =>
-                            <ProjectCase project={project} key={project.id}/>
+                            <ProjectCase project={project} link={'/user/:id/project/:project_id'} key={project.id}/>
                         )}
                     </div>
                 </div>

@@ -9,8 +9,6 @@ import AdminNavbar from "./components/UI/admin_navbar/admin_navbar"
 function App () {
     return (
         <div className="App">
-
-            {/*<AdminNavbar/>*/}
             <AppRouter/>
         </div>
     );

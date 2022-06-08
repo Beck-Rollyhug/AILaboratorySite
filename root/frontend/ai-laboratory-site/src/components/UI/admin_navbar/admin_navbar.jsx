@@ -1,17 +1,22 @@
 import React, {useContext} from 'react';
 import './admin_navbar.css'
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import iisLogo from "../../../img/IIS_logo_admin.png";
+import {useAuth} from "../../hooks/useAuth";
 /*import {Context} from "../../../index";*/
 
 const AdminNavbar = () => {
+    const {sign_out} = useAuth();
+    const navigate = useNavigate();
+
+
     /*const {user} = useContext(Context);*/
     const logout = () => {
         /*user.setIsAuth(false);*/
         localStorage.removeItem('auth');
     }
     return (
-        <header>
+        <header className={'naviHead'}>
             <div className="containerTop">
                 <nav className="nav">
                     <div className="flexContainer">
@@ -25,7 +30,7 @@ const AdminNavbar = () => {
                     <div className="flexContainer">
                         <Link className="navLink" to={'/admin/1/profile'}>Профиль</Link>
                         <Link className="navLink" to={'/admin/1/general_settings'}>Общие настройки</Link>
-                        <button className="navLink" onClick={logout}>Выйти</button>
+                        <button className="navLink" onClick={() => sign_out(() => navigate('/login', {replace: true}))}>Выйти</button>
                     </div>
                 </nav>
             </div>

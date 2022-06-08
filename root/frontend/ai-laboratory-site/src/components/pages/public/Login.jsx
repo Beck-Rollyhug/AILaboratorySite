@@ -20,19 +20,30 @@ async function Login(credentials) {
     return response;
 }*/
 
+function fetchLogin(email) {
+    return 'user';
+}
+
+
 const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const {sign_in} = useAuth();
 
-    const fromPage = location.state?.from?.pathname || '/user/:id/projects'
+    const fromUserPage = location.state?.from?.pathname || '/user/:id/projects'
+    const fromAdminPage = location.state?.from?.pathname || '/admin/:id/projects_manager'
 
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
-        const user = form.email.value; // Для валидации
-
-        sign_in(user, () => navigate(fromPage, {replace: true}));
+        const email = form.email.value; // Для валидации
+        const role = fetchLogin(email);
+        if (role === 'user') {
+            sign_in('Alex', role, () => navigate(fromUserPage, {replace: true}));
+        }
+        if (role === 'admin') {
+            sign_in('Alex', role, () => navigate(fromAdminPage, {replace: true}));
+        }
     }
 
     /*const {user} = useContext(Context);

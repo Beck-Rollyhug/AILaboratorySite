@@ -16,21 +16,21 @@ const Navbar = () => {
         localStorage.removeItem('auth');
     }
     return (
-        <header>
+        <header className={'naviHead'}>
             <div className="containerTop">
-                <nav className="nav">
+                <nav className="navi">
                     <div className="flexContainer">
-                        <Link className="navLink" to={'/'}>Главная</Link>
-                        <Link className="navLink" to={'/user/1/projects'}>Проекты</Link>
-                        <Link className="navLink" to={'/user/1/profile/'}>Профиль</Link>
+                        <Link className="naviLink" to={'/'}>Главная</Link>
+                        <Link className="naviLink" to={'/user/1/projects'}>Проекты</Link>
+                        <Link className="naviLink" to={'/user/1/profile/'}>Профиль</Link>
                     </div>
                     <div className="flexContainer">
                         <img className="logo-IIS" src={iisLogo} alt={'logo'}/>
                     </div>
                     <div className="flexContainer">
-                        <Link className="navLink" to={'/user/1/contact_us'}>Связаться с нами</Link>
-                        <Link className="navLink" to={'/user/1/tech_support'}>Тех.Поддержка</Link>
-                        <button className="navLink" onClick={() => sign_out(() => navigate('/login', {replace: true}))}>Выйти</button>
+                        <Link className="naviLink" to={'/user/1/contact_us'}>Связаться с нами</Link>
+                        <Link className="naviLink" to={'/user/1/tech_support'}>Тех.Поддержка</Link>
+                        <button className="naviLink" onClick={() => sign_out(() => navigate('/login', {replace: true}))}>Выйти</button>
                     </div>
                 </nav>
             </div>

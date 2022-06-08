@@ -100,11 +100,9 @@ const Profile: FC = () => {
                     </div>
                     <h2 className="listFullProjects">Проекты</h2>
                     <div className="projects-panel">
-                        <Link to="/project/:id">
-                            {profile.projects.map(project =>
-                                <ProjectCase project={project} key={project.id}/>
-                            )}
-                        </Link>
+                        {profile.projects.map(project =>
+                            <ProjectCase project={project} link={'/user/:id/project/:project_id'} key={project.id}/>
+                        )}
                     </div>
                 </div>
             </section>

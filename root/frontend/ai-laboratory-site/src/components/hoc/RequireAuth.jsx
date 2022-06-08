@@ -6,8 +6,9 @@ import {useAuth} from "../hooks/useAuth";
 const RequireAuth = ({children}) => {
     const location = useLocation();
     const {user} = useAuth();
+    const {role} = useAuth();
 
-    if(!user) {
+    if(!user && !role) {
       return <Navigate to='/login' state={{from: location}} />
     }
 

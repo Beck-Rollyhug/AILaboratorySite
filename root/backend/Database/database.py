@@ -1,11 +1,12 @@
-import mysql.connector
+import psycopg2
 import json
+from psycopg2.extras import RealDictCursor
 
 
-def _get_data(field_name):
+def _get_pass():
     with open("Database/settings.json") as json_data:
         settings = json.load(json_data)
-        return settings[field_name]
+        return settings['password']
 
 
 class Database:
@@ -13,17 +14,19 @@ class Database:
     Класс для работы с БД
     Не рекомендуется использовать самостоятельно!
     """
+    password = _get_pass()
+
     @staticmethod
     def execute(query, *args):
         con = Database.__connect()
         if not con:
             return None
-        cursor = con.cursor(dictionary=True)
+        cursor = con.cursor(cursor_factory=RealDictCursor)
         try:
             cursor.execute(query, args)
             res = cursor.fetchall()
             res = [dict(rc) for rc in res]
-        except mysql.connector.ProgrammingError as e:
+        except psycopg2.ProgrammingError as e:
             print(f"Error: {e}")
             res = None
         finally:
@@ -36,10 +39,10 @@ class Database:
         Добавить пользователя в бд.
         data: Словарь -- {название поля в бд: значение}
         """
-        names = '' + ', '.join(data.keys()) + ''
+        names = '"' + '", "'.join(data.keys()) + '"'
         ss = ", ".join(['%s' for val in data.values()])
         query = f"""
-            INSERT INTO {table} ({names})
+            INSERT INTO "{table}"({names})
                 VALUES ({ss});
         """
         return Database.execute(query, *list(data.values()))
@@ -50,9 +53,9 @@ class Database:
         удалить строки из бд
         filter: Словарь -- {название поля в бд: значение}
         """
-        fltr = " and ".join([f'{key}=%s' for key in filter.keys()])
+        fltr = " and ".join([f'"{key}"=%s' for key in filter.keys()])
         query = f"""
-        DELETE FROM {table}
+        DELETE FROM "{table}"
         WHERE {fltr}
         """
         return Database.execute(query, *list(filter.values()))
@@ -60,7 +63,7 @@ class Database:
     @staticmethod
     def get_all_from(table):
         query = f"""
-        select * from {table}
+        select * from "{table}"
         """
         return Database.execute(query)
 
@@ -70,9 +73,9 @@ class Database:
         Добавить пользователя в бд.
         data: Словарь -- {название поля в бд: значение}
         """
-        fltr = " and ".join([f'{key}=%s' for key in search_filter.keys()])
+        fltr = " and ".join([f'"{key}"=%s' for key in search_filter.keys()])
         query = f"""
-        select * from {table}
+        select * from "{table}"
         where {fltr}
         """
         return Database.execute(query, *list(search_filter.values()))
@@ -84,9 +87,9 @@ class Database:
         data: Словарь -- {название поля в бд: значение}
         """
         id = data.pop('id')
-        fltr = ", ".join([f'{key}=%s' for key in data])
+        fltr = ", ".join([f'"{key}"=%s' for key in data])
         query = f"""
-        UPDATE {table}
+        UPDATE "{table}"
         SET {fltr}
         WHERE id='{id}'
         """
@@ -95,21 +98,15 @@ class Database:
     @staticmethod
     def __connect():
         try:
-            host = _get_data('host')
-            port = _get_data('port')
-            user = _get_data('user')
-            password = _get_data('password')
-            database = _get_data('database')
-
-            con = mysql.connector.connect(
-                user=user,
-                password=password,
-                host=host,
-                port=port,
-                database=database
+            con = psycopg2.connect(
+                user="postgres",
+                password=Database.password,
+                host="127.0.0.1",
+                port="5432",
+                database="laboratoryDB"
             )
             con.autocommit = True
-        except mysql.connector.OperationalError as e:
+        except psycopg2.OperationalError as e:
             con = None
             print(f"Error: {e}")
         return con

@@ -14,11 +14,11 @@ def get_user_projects(user_id):
     """
     query = f"""
         SELECT * 
-        FROM Projects
-        where id in (
-            SELECT project_id
-            FROM UsersProjects
-            where user_id='{user_id}' )
+        FROM "Projects"
+        where "id" in (
+            SELECT "project_id"
+            FROM "UsersProjects"
+            where "user_id"='{user_id}' )
     """
     return Database.execute(query)
 
@@ -45,21 +45,21 @@ def get_projects():
             , uni.name as uni_name
             , users.full_name as manager_name
             , users.email as manager_email
-            , group_concat(students.id) students
-            , group_concat(skills.name) skills
-        FROM Projects projects
-        left join Partners part on projects.partner_id=part.id
-        left join Universities uni on projects.uni_id=uni.id
-        left join Users users on projects.manager_id=users.id
-        left join Users students on students.id in (
-            select user_id
-            from UsersProjects us_pr
-            where us_pr.project_id=projects.id
+            , array_agg(students.id) students
+            , array_agg(skills.name) skills
+        FROM "Projects" projects
+        left join "Partners" part on projects.partner_id=part.id
+        left join "Universities" uni on projects.uni_id=uni.id
+        left join "Users" users on projects.manager_id=users.id
+        left join "Users" students on students.id in (
+            select "user_id"
+            from "UsersProjects" us_pr
+            where us_pr."project_id"=projects.id
         )
-        left join Skills skills on skills.id in (
-            select skill_id
-            from ProjectSkills sk
-            where sk.project_id=projects.id
+        left join "Skills" skills on skills.id in (
+            select "skill_id"
+            from "ProjectSkills" sk
+            where sk."project_id"=projects.id
         )
         group by 
             projects.id

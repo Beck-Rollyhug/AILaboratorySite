@@ -8,12 +8,13 @@ html, body {
     height: 100%;
 }
 
+/*
 *,
 *:before,
 *:after {
     box-sizing: border-box;
 }
-
+*/
 header {
     align-self: flex-start;
     width: 100%;

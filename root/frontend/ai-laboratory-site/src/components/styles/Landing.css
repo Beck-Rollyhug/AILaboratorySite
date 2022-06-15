@@ -6,14 +6,14 @@ body .landing{
     background-color: var(--mainGrey);
     font-family: 'Open Sans', sans-serif;
 }
-
+/*
 :root{
     --mainGrey: #F5F5F5;;
     --white: white;
     --h2: #CF5B36;
     --titleText: #CACACA;
     --footer: #26272C;
-}
+}*/
 
 .container{
     max-width: 1440px;

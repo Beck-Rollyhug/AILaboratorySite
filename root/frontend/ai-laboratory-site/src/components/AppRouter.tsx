@@ -16,7 +16,7 @@ import UsersManager from "./pages/private/admin/UsersManager";
 import Profile from "./pages/private/user/Profile";
 import GeneralSettings from "./pages/private/admin/GeneralSettings";
 import {RequireAuth} from "./hoc/RequireAuth";
-import Navbar from "./UI/Navbar/Navbar";
+import {Navbar} from "./UI/Navbar/Navbar.js";
 import {AuthProvider} from "./hoc/AuthProvider";
 import AdminNavbar from './UI/admin_navbar/admin_navbar'
 import LendingEditor from "./pages/private/admin/LendingEditor";
@@ -31,28 +31,6 @@ const AppRouter = () => {
             user.setIsAuth(true)
         }
     }, [])*/
-    {/*user.isAuth
-                ?
-                <div>
-                    <Navbar/>
-                    <Routes>
-                        <Route path='/' element={<Landing/>}/>
-                        <Route path='/profile' element={<Profile/>}/>
-                        <Route path='/profile/edit' element={<ProfileEdit/>}/>
-                        <Route path='/projects' element={<Projects/>}/>
-                        <Route path='/projects/page' element={<ProjectPage/>}/>
-                        <Route path='/contact_us' element={<ContactUs/>}/>
-                        <Route path='/tech_support' element={<TechSupport/>}/>
-                        <Route path='*' element={<NotFound/>}/>
-                    </Routes>
-                </div>
-                :
-                <Routes>
-                    <Route path='/' element={<Landing/>}/>
-                    <Route path='/login' element={<Login/>}/>
-                    <Route path='/reg' element={<Reg/>}/>
-                    <Route path='*' element={<Login/>}/>
-                </Routes>*/}
 
     return (
         <AuthProvider>

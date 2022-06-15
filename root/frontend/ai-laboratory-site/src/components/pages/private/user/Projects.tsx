@@ -3,7 +3,6 @@ import ProjectCase from "../../../UI/ProjectCase/ProjectCase";
 import SearchBar from "../../../UI/SearchBar/SearchBar";
 import PostService from "../../../../api/UserService";
 /*import {Context} from "../index";*/
-import {observer} from "mobx-react-lite";
 
 /*
 async function getProjects() {

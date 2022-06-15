@@ -168,7 +168,7 @@ li {
 
 .btn {
     box-sizing: content-box;
-    width: 174px;
+    width: 100vw;
     padding: 12px 17px;
     background: #4A83B8;
     color: #fff;
@@ -197,6 +197,4 @@ li {
     color: #4A83B8;
     display: flex;
     justify-content: center;
-
-    display: none;
 }

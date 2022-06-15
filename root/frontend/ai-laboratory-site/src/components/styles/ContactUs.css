@@ -8,17 +8,19 @@
     width: 100%;
     max-width: 368px;
     margin: auto;
-    text-align: center;
+    text-align: left;
+}
+
+label {
+    text-align: left;
 }
 
 input, select, textarea {
-    padding: 12px 26px;
 }
 
 .formFloating,
 select,
 textarea {
-    padding: 12px 26px;
     font-family: Roboto, sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -61,8 +63,7 @@ textarea {
     font-weight: normal;
     font-size: 14px;
     line-height: 16px;
-    width: 100%;
-    padding: 12px 17px;
+    width: 100vw;
     color: #fff;
     border-radius: 10px;
     border: none;

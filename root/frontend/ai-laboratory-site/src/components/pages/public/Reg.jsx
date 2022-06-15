@@ -39,15 +39,15 @@ const Reg = () => {
         localStorage.setItem('auth', 'true');
     }
     return (
-        <main className="formSignin">
-            <form>
+        <main className="formSignin-reg">
+            <form className={'reg'}>
                 <img className="logoMenu" src={iisLogo} alt="iis-logo"/>
                 <h2 className="title">Регистрация</h2>
-                <div className="formFloating">
+                <div className="formFloating-reg">
                     <input
                         type="text"
                         onChange={event => setFullName(event.target.value)}
-                        className="formControl"
+                        className="formControl-reg"
                         id="floatingName"
                         placeholder="ФИО..."/>
                         <label htmlFor="floatingName"></label>
@@ -55,7 +55,7 @@ const Reg = () => {
                 <div className='container'>
                     <div className="form-check row justify-content-left">
                         <input
-                            className="form-check-input col mx-auto"
+                            className="form-check-input col mx-auto reg"
                             type="checkbox"
                             id="inlineCheckbox1"
                             value="option1"/>
@@ -64,20 +64,20 @@ const Reg = () => {
                         </label>
                     </div>
                 </div>
-                <div className="formFloating">
+                <div className="formFloating-reg">
                     <input
                         type="email"
                         onChange={event => setEmail(event.target.value)}
-                        className="formControl"
+                        className="formControl-reg"
                         id="floatingInput"
                         placeholder="Почта..."/>
                         <label htmlFor="floatingInput"></label>
                 </div>
-                <div className="formFloating">
+                <div className="formFloating-reg">
                     <input
                         type="password"
                         onChange={event => setPassword(event.target.value)}
-                        className="formControl"
+                        className="formControl-reg"
                         id="floatingPassword"
                         placeholder="Пароль..."/>
                         <label htmlFor="floatingPassword"></label>

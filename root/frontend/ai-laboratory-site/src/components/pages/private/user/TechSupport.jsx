@@ -7,12 +7,12 @@ const TechSupport = () => {
             <form>
                 <label htmlFor="floatingName">Где возникла проблема?</label>
                 <div className="formFloating">
-                    <input className="formControl" type="text" id="floatingName" placeholder="Тема..."/>
+                    <input className="formControl-tech" type="text" id="floatingName" placeholder="Тема..."/>
                 </div>
                 <label htmlFor="floatingTel">Куда вам отправить ответ?</label>
                 <div className="formFloating">
 
-                    <input type="email" className="formControl" id="floatingTel" placeholder="Почта..."/>
+                    <input type="email" className="formControl-tech" id="floatingTel" placeholder="Почта..."/>
                 </div>
                 <label htmlFor="floatingTel">Опишите проблему: </label>
                 <div className="formFloating">

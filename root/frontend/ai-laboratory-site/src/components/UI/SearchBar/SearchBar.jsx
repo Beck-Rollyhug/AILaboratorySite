@@ -1,24 +1,31 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './SearchBar.css'
 
 const SearchBar = () => {
+    const [isActive, setIsActive] = useState(null);
+
+    const handleClick = () => {
+        setIsActive(current => !current);
+    }
+
     return (
         <div className="searching">
             <div className="searchBar">
-                <div className="navbarToggler" id="filter" type="button">
-                    <span className="navbarTogglerIcon"></span>
-                </div>
+                <button className="navbarToggler" id="filter" type="button"
+                onClick={handleClick}/>
                 <input type="text" className="searchProject" placeholder="Найти проект..."/>
             </div>
-            <div className="searchAdd" id="text">
+            <div className="searchAdd" id="text"
+            style={{
+                display: isActive ? 'flex' : 'none',
+            }}>
                 <div className="searchAddBar searchAddCurator">
-                    <input className="addCurator" placeholder="Куратор..." value=""/>
+                    <label>Куратор</label>
+                    <input className="addCurator" placeholder="ФИО..."/>
                 </div>
                 <div className="searchAddBar searchAddTechno">
-                    <input className="addTechno" placeholder="Технологии..." value=""/>
-                </div>
-                <div className="searchAddBar searchAddPartner">
-                    <input className="addPartner" placeholder="Партнер..." value=""/>
+                    <label>Технологии</label>
+                    <input className="addTechno" placeholder="Название..."/>
                 </div>
             </div>
         </div>

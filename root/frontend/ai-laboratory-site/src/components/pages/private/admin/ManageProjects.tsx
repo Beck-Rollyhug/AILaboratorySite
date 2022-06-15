@@ -98,7 +98,7 @@ const ManageProjects: FC = () => {
                     <SearchBar/>
                     <div className="projectsPanel">
                         {projects.map(project =>
-                            <ProjectCase project={project} key={project.id}/>
+                            <ProjectCase project={project} link={'/admin/:id/project_page/:project_id'} key={project.id}/>
                         )}
                     </div>
                 </div>

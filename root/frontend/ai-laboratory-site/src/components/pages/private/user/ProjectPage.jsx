@@ -1,7 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../../../styles/ProjectPage.css'
 
 const ProjectPage = () => {
+    const [haveProject, setHaveProject] = useState(false);
+
+    const handleClick = () => {
+        setHaveProject(current => !current);
+    }
     return (
         <div className="containerMenu">
             <div className="projectsPanel">
@@ -53,15 +58,17 @@ const ProjectPage = () => {
                     </div>
                     <div className="footerTitle">
                         <div className="skills">
-                            <span className="PostreSQL">PostreSQL</span>
-                            <span className="Python">Python</span>
-                            <span className="AutodeskMaya2020">Autodesk Maya 2020</span>
+                            <span className="skillCase">PostreSQL</span>
+                            <span className="skillCase">Python</span>
+                            <span className="skillCase">Autodesk Maya 2020</span>
                         </div>
                         <div className="manCount">4 / 5</div>
                     </div>
                 </div>
-                <button className="btn" id="btnRecord" type="submit">ЗАПИСАТЬСЯ НА ПРОЕКТ</button>
-                <p className="OKAY">Заявка отправлена!</p>
+                {haveProject
+                    ? <p className="OKAY">Заявка отправлена!</p>
+                    : <button onClick={handleClick} className="btn" id="btnRecord" type="submit">Записаться на проект</button>
+                }
             </div>
         </div>
     );

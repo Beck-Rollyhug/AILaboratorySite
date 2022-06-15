@@ -19,6 +19,7 @@ import {RequireAuth} from "./hoc/RequireAuth";
 import Navbar from "./UI/Navbar/Navbar";
 import {AuthProvider} from "./hoc/AuthProvider";
 import AdminNavbar from './UI/admin_navbar/admin_navbar'
+import LendingEditor from "./pages/private/admin/LendingEditor";
 
 
 const AppRouter = () => {
@@ -101,7 +102,7 @@ const AppRouter = () => {
                     <Route path='landing_settings' element={
                         <RequireAuth>
                             <AdminNavbar/>
-                            <ManageProjects/>
+                            <LendingEditor/>
                         </RequireAuth>
                     }/>
                     <Route path='users_manager' element={

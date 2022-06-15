@@ -7,12 +7,11 @@ const ContactUs = () => {
             <form>
                 <label htmlFor="floatingName">Что хотите узнать?</label>
                 <div className="formFloating">
-                    <input className="formControl" type="text" id="floatingName" placeholder="Тема..."/>
+                    <input className="formControl-contactUs" type="text" id="floatingName" placeholder="Тема..."/>
                 </div>
                 <label htmlFor="floatingTel">Куда вам отправить ответ?</label>
                 <div className="formFloating">
-
-                    <input type="email" className="formControl" id="floatingTel" placeholder="Почта..."/>
+                    <input type="email" className="formControl-contactUs" id="floatingTel" placeholder="Почта..."/>
                 </div>
                 <label htmlFor="floatingTel">Расскажите подробнее:</label>
                 <div className="formFloating">

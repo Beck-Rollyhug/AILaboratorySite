@@ -72,7 +72,7 @@ const Profile = () => {
                 <div className="projects-panel">
                     <Link to="/project/:id">
                         {profile.projects.map(project =>
-                            <ProjectCase project={project} key={project.id}/>
+                            <ProjectCase project={project} link={'/admin/:id/profile'} key={project.id}/>
                         )}
                     </Link>
                 </div>

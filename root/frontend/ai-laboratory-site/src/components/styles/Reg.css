@@ -27,7 +27,7 @@ header {
     margin-right: auto;
 }
 
-.formSignin {
+.formSignin-reg {
     width: 100%;
     max-width: 340px;
     text-align: center;
@@ -36,7 +36,7 @@ header {
 }
 
 @media (max-width: 599px) {
-    .formSignin {
+    .formSignin-reg {
         max-width: 320px;
     }
     .logoMenu {
@@ -56,13 +56,13 @@ header {
 }
 
 @media (max-width: 414px) {
-    .formSignin {
+    .formSignin-reg {
         max-width: 300px;
     }
 }
 
 @media (max-width: 355px) {
-    .formSignin {
+    .formSignin-reg {
         max-width: 270px;
     }
     .btn {
@@ -71,7 +71,7 @@ header {
 }
 
 @media (max-width: 314px) {
-    .formSignin {
+    .formSignin-reg {
         max-width: 250px;
     }
     .btn {
@@ -83,12 +83,12 @@ header {
 }
 
 @media (max-width: 280px) {
-    .formSignin {
+    .formSignin-reg {
         max-width: 230px;
     }
 }
 
-form {
+form .reg {
      text-align: center;
 }
 
@@ -113,7 +113,7 @@ form {
     margin: 0 0 20px 0;
 }
 
-.formFloating {
+.formFloating-reg {
     font-family: Roboto, sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -121,9 +121,10 @@ form {
     letter-spacing: -0.04em;
     font-feature-settings: 'kern' off;
     color: #8E8E8E;
+    margin-bottom: 15px;
 }
 
-input[class="formControl"] {
+input[class="formControl-reg"] {
     background: #EAEAEA;
     border-radius: 10px;
     width: 100%;
@@ -131,7 +132,7 @@ input[class="formControl"] {
     color: #151515;
 }
 
-input {
+input .reg{
     padding: 12px 26px;
     border: none;
     margin-bottom: 10px;
@@ -141,7 +142,7 @@ input:focus {
     outline: none;
 }
 
-.formControl {
+.formControl reg {
     background: #EAEAEA;
     border-radius: 10px;
 }

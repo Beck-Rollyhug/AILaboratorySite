@@ -1,49 +1,61 @@
 import React from 'react';
 import '../../styles/Login.css'
 import iisLogo from "../../../img/IIS_logo.jpg";
-import {Link, useHistory, useNavigate, useLocation} from "react-router-dom";
+import {Link, useNavigate, useLocation} from "react-router-dom";
 import {useAuth} from "../../hooks/useAuth";
-//import {observer} from "mobx-react-lite";
 
-/*
-async function Login(credentials) {
-    let response = await fetch('/api/login',
-        {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(credentials)
-        })
-        .then(data => data.json());
-    console.log(response.id);
-    return response;
-}*/
+async function findUser(credentials) {
+    try {
+        console.log('1-findUser');
 
-function fetchLogin(email) {
-    return 'user';
+        let newUser = await fetch("/api/login",
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(credentials)
+            })
+            .then(data => data.json());
+
+        console.log('2-got-response');
+
+        return newUser;
+    } catch (e) {}
 }
 
 
 const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const {sign_in} = useAuth();
+    const {sign_in, user} = useAuth();
 
     const fromUserPage = location.state?.from?.pathname || '/user/:id/projects'
-    const fromAdminPage = location.state?.from?.pathname || '/admin/:id/projects_manager'
+    //const fromAdminPage = location.state?.from?.pathname || '/admin/:id/projects_manager'
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async event => {
         event.preventDefault();
         const form = event.target;
-        const email = form.email.value; // Для валидации
-        const role = fetchLogin(email);
+        const email = form.email.value;
+        const password = form.password.value;
+        const newUser = await findUser({
+            email: email,
+            password: password
+        });
+
+        console.log('3-start-sign-in');
+
+        sign_in(newUser.id, () => navigate('/user/' + newUser.id + '/projects', {replace: true}));
+
+        //sign_in(credentials, () => navigate('/user/:id/projects', {replace: true}));
+        /*
         if (role === 'user') {
             sign_in('Alex', role, () => navigate(fromUserPage, {replace: true}));
         }
         if (role === 'admin') {
             sign_in('Alex', role, () => navigate(fromAdminPage, {replace: true}));
         }
+        */
     }
 
     /*const {user} = useContext(Context);
@@ -73,15 +85,15 @@ const Login = () => {
         }
     }*/
     return (
-        <div className="formSignin">
-             <form onSubmit={handleSubmit}>
+        <div className={'formSignin-login'}>
+            <form onSubmit={handleSubmit} className={'login'}>
                 <img className="logoMenu" src={iisLogo} alt="iis-logo"/>
                 <h2 className="title">Авторизация</h2>
                 <div className="formFloating">
                     <input
                         type="email"
                         name={'email'}
-                        className="formControl"
+                        className="formControl-login"
                         id="floatingInput"
                         placeholder="Почта..."/>
                     <label htmlFor="floatingInput"></label>
@@ -89,7 +101,8 @@ const Login = () => {
                 <div className="formFloating">
                     <input
                         type="password"
-                        className="formControl"
+                        name={'password'}
+                        className="formControl-login"
                         id="floatingPassword"
                         placeholder="Пароль..."/>
                     <label htmlFor="floatingPassword"></label>

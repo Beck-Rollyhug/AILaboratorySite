@@ -1,3 +1,5 @@
+/*
+
 body {
     margin: 0;
     padding: 0;
@@ -25,13 +27,13 @@ header {
 
 .navbar-dark .navbar-toggler-icon {
     background-image: url("src/img/filter.svg");
-    /*display: inline-block;
+    display: inline-block;
     width: 1.5em;
     height: 1.5em;
     vertical-align: middle;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 100%;*/
+    background-size: 100%;
 }
 
 .nav {
@@ -121,7 +123,7 @@ input {
     text-decoration: none;
 }
 
-/*table {
+table {
     width: 100%;
     font-family: Open Sans, sans-serif;
     font-style: normal;
@@ -129,7 +131,7 @@ input {
     font-size: 12px;
     line-height: 24px;
     color: #848484;
-}*/
+}
 
 td {
     padding: 15px 10px;
@@ -158,3 +160,5 @@ h2 {
 p {
     margin: 0;
 }
+
+ */

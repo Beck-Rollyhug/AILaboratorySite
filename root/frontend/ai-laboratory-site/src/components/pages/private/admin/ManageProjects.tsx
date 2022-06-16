@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import "../../../styles/ManagaProjects.css"
-import SearchBar from "../../../UI/SearchBar/SearchBar";
-import ProjectCase from "../../../UI/ProjectCase/ProjectCase";
+import {SearchBar} from "../../../UI/SearchBar";
+import {ProjectCase} from "../../../UI/ProjectCase";
 
 const projects = [
     {

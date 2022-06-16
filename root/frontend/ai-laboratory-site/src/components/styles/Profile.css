@@ -1,15 +1,15 @@
+/*
+
 body {
     margin: 0;
     padding: 0;
 }
 
-/*
 *,
 *:before,
 *:after {
     box-sizing: border-box;
 }
-*/
 
 .containerMenu {
     max-width: 64%;
@@ -169,3 +169,5 @@ p {
     background: #23DF58;
     border-radius: 5px;
 }
+
+ */

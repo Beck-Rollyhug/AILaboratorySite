@@ -16,7 +16,7 @@ import UsersManager from "./pages/private/admin/UsersManager";
 import Profile from "./pages/private/user/Profile";
 import GeneralSettings from "./pages/private/admin/GeneralSettings";
 import {RequireAuth} from "./hoc/RequireAuth";
-import {Navbar} from "./UI/Navbar/Navbar.js";
+import {Navbar} from "./UI/Navbar";
 import {AuthProvider} from "./hoc/AuthProvider";
 import AdminNavbar from './UI/admin_navbar/admin_navbar'
 import LendingEditor from "./pages/private/admin/LendingEditor";

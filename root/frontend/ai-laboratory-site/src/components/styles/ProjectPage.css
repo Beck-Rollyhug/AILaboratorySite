@@ -1,3 +1,5 @@
+/*
+
 .containerMenu {
     max-width: 64%;
     margin: 0 auto;
@@ -72,7 +74,7 @@ p {
     width: 50%;
     padding: 10px;
 
-    /*border: 1px solid black;*/
+    border: 1px solid black;
 }
 
 ul {
@@ -198,3 +200,5 @@ li {
     display: flex;
     justify-content: center;
 }
+
+ */

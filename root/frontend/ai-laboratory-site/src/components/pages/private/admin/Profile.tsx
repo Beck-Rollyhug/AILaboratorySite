@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import ProjectCase from "../../../UI/ProjectCase/ProjectCase";
+import {ProjectCase} from "../../../UI/ProjectCase";
 import '../../../styles/Profile.css'
 
 const profile = {

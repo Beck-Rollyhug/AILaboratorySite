@@ -3,7 +3,7 @@ import '../../../styles/Profile.css'
 import React, {FC} from 'react';
 import {Link, useParams} from "react-router-dom";
 
-import ProjectCase from "../../../UI/ProjectCase/ProjectCase";
+import {ProjectCase} from "../../../UI/ProjectCase";
 //import {AuthContext, UserContext} from "../../context";
 //import PostService from "../../api/UserService";
 

@@ -9,11 +9,13 @@ body .App{
     text-decoration: none;
 }
 
+/*
 a {
     width: 100%;
     height: 100%;
     color: #666666;
 }
+*/
 
 body a {
     text-decoration: none;
@@ -21,6 +23,7 @@ body a {
 
 html {
     scroll-behavior: smooth;
+    overflow-y: hidden;
 }
 
 /*

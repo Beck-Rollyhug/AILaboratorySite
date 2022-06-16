@@ -1,3 +1,5 @@
+/*
+
 body {
     display: flex;
     flex-direction: column;
@@ -8,16 +10,15 @@ html, body {
     height: 100%;
 }
 
-/*
+
 *,
 *:before,
 *:after {
     box-sizing: border-box;
 }
-*/
 
 header {
-    /*align-self: flex-start;*/
+    align-self: flex-start;
     width: 100%;
     margin-bottom: 8%;
 }
@@ -195,3 +196,5 @@ input[type="password"] {
     color: #296194;
     text-decoration: none;
 }
+
+ */

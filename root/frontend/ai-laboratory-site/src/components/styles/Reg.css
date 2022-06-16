@@ -1,3 +1,5 @@
+/*
+
 body {
     display: flex;
     flex-direction: column;
@@ -8,13 +10,13 @@ html, body {
     height: 100%;
 }
 
-/*
+
 *,
 *:before,
 *:after {
     box-sizing: border-box;
 }
-*/
+
 header {
     align-self: flex-start;
     width: 100%;
@@ -211,3 +213,5 @@ input[type="checkbox"] {
     background: #C9C9C9;
     border: none;
 }
+
+ */

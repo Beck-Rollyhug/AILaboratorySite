@@ -1,0 +1,24 @@
+.projectsList {
+    /* projects-list */
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 400px 200px 400px;
+    gap: 20px;
+    overflow-y: scroll;
+
+    /* change if common height will change */
+    height: 64vh;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 1;
+}
+
+main {
+    height: 100%;
+}

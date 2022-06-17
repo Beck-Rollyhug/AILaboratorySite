@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import '../../../styles/ProjectPage.css'
+import '../../../../styles/ProjectPage.css'
 
 const ProjectPage = () => {
     const [haveProject, setHaveProject] = useState(false);

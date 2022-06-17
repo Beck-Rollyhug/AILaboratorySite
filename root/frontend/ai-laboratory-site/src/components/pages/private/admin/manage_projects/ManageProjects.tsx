@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
-import "../../../styles/ManagaProjects.css"
-import {SearchBar} from "../../../UI/SearchBar";
-import {ProjectCase} from "../../../UI/ProjectCase";
+import "./ManagaProjects.css"
+import {SearchBar} from "../../../../UI/SearchBar";
+import {ProjectCase} from "../../../../UI/ProjectCase";
 
 const projects = [
     {
@@ -107,4 +107,4 @@ const ManageProjects: FC = () => {
     );
 };
 
-export default ManageProjects;
+export {ManageProjects};

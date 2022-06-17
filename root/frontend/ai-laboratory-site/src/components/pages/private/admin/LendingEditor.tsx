@@ -1,5 +1,5 @@
 import React from 'react';
-import Landing from "../../public/Landing";
+import Landing from "../../public/landing/Landing";
 import {Link} from "react-router-dom";
 import partnerUrfu from "../../../styles/design/images/urfu.png";
 import firstPic from "../../../styles/design/images/first.png";

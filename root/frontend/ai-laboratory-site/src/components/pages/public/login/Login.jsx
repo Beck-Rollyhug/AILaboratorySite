@@ -1,8 +1,8 @@
 import React from 'react';
-import '../../styles/Login.css'
-import iisLogo from "../../../img/IIS_logo.jpg";
+import styles from './Login.module.css'
+import iisLogo from "../../../../img/IIS_logo.jpg";
 import {Link, useNavigate, useLocation} from "react-router-dom";
-import {useAuth} from "../../hooks/useAuth";
+import {useAuth} from "../../../hooks/useAuth";
 
 async function findUser(credentials) {
     try {
@@ -85,34 +85,41 @@ const Login = () => {
         }
     }*/
     return (
-        <div className={'formSignin-login'}>
-            <form onSubmit={handleSubmit} className={'login'}>
-                <img className="logoMenu" src={iisLogo} alt="iis-logo"/>
-                <h2 className="title">Авторизация</h2>
-                <div className="formFloating">
+        <main className={styles.main}>
+            <form onSubmit={handleSubmit} className={styles.form}>
+                <img className={styles.logo} src={iisLogo} alt="iis-logo"/>
+                <h2 className={styles.title}>
+                    Авторизация
+                </h2>
+                <div className={styles.input_box}>
+                    <label htmlFor="email" className={styles.label}>
+                        Логин
+                    </label>
                     <input
                         type="email"
                         name={'email'}
-                        className="formControl-login"
-                        id="floatingInput"
+                        className={styles.input}
+                        id="email"
                         placeholder="Почта..."/>
-                    <label htmlFor="floatingInput"></label>
                 </div>
-                <div className="formFloating">
+                <div className={styles.input_box}>
+                    <label htmlFor="password" className={styles.label}>
+                        Пароль
+                    </label>
                     <input
                         type="password"
                         name={'password'}
-                        className="formControl-login"
-                        id="floatingPassword"
+                        className={styles.input}
+                        id="password"
                         placeholder="Пароль..."/>
-                    <label htmlFor="floatingPassword"></label>
                 </div>
-                <button className="btn" type="submit">Войти</button>
-                 <Link className="linkReg" to="/reg">Регистрация</Link>
-                 <Link className="linkReg" to="/">На главную</Link>
+                <button className={styles.button} type="submit">Войти</button>
+                <Link className={styles.link} to="/reg">Регистрация</Link>
+                <Link className={styles.link} to="/">На главную</Link>
+                <Link className={styles.link} to="/admin/:id/users_manager">Войти как администратор</Link>
             </form>
-        </div>
+        </main>
     );
 };
 
-export default Login;
+export {Login};

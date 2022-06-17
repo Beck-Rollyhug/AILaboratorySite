@@ -1,25 +1,28 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom";
 
+import LendingEditor from "./pages/private/admin/LendingEditor";
 import AdminProfile from "./pages/private/admin/Profile";
-import NotFound from "./pages/system/NotFound";
-import Login from "./pages/public/Login";
-import Reg from "./pages/public/Reg";
-import Landing from "./pages/public/Landing";
+import {ManageProjects} from "./pages/private/admin/manage_projects";
+import UsersManager from "./pages/private/admin/UsersManager";
+import GeneralSettings from "./pages/private/admin/GeneralSettings";
+import AdminNavbar from './UI/admin_navbar/admin_navbar';
+
+import {Login} from "./pages/public/login";
+import {Reg} from "./pages/public/reg";
+import {Landing} from "./pages/public/landing";
+
 import {TechSupport} from "./pages/private/user/tech_support";
 import {ContactUs} from "./pages/private/user/contact_us";
 import {Projects} from "./pages/private/user/projects";
 import {ProfileEdit} from "./pages/private/user/profile_edit";
-import ProjectPage from "./pages/private/user/ProjectPage";
-import ManageProjects from "./pages/private/admin/ManageProjects";
-import UsersManager from "./pages/private/admin/UsersManager";
 import {Profile} from "./pages/private/user/profile";
-import GeneralSettings from "./pages/private/admin/GeneralSettings";
-import {RequireAuth} from "./hoc/RequireAuth";
 import {Navbar} from "./UI/Navbar";
+
+import NotFound from "./pages/system/NotFound";
+
 import {AuthProvider} from "./hoc/AuthProvider";
-import AdminNavbar from './UI/admin_navbar/admin_navbar'
-import LendingEditor from "./pages/private/admin/LendingEditor";
+import {RequireAuth} from "./hoc/RequireAuth";
 
 
 const AppRouter = () => {
@@ -57,12 +60,6 @@ const AppRouter = () => {
                             <Projects/>
                         </RequireAuth>
                         }/>
-                    <Route path='project/:project_id' element={
-                        <RequireAuth>
-                            <Navbar/>
-                            <ProjectPage/>
-                        </RequireAuth>
-                    }/>
                     <Route path='contact_us' element={
                         <RequireAuth>
                             <Navbar/>

@@ -1,6 +1,6 @@
 //import Login from "../Login/login.jsx";
 //import Reg from "../Registration/reg.jsx";
-import Profile from "../pages/private/user/Profile";
+import Profile from "../pages/private/user/profile/Profile";
 import Projects from "../pages/private/user/Projects";
 import NotFound from "../pages/system/NotFound";
 

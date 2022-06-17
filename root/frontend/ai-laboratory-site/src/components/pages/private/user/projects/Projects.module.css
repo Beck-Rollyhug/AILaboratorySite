@@ -1,4 +1,4 @@
-.projectsList {
+.list {
     /* projects-list */
     /* Auto layout */
     display: flex;
@@ -19,6 +19,6 @@
     flex-grow: 1;
 }
 
-main {
+.main {
     height: 100%;
 }

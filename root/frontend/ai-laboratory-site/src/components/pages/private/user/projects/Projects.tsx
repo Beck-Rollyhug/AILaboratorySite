@@ -1,9 +1,9 @@
 import React, {FC, useContext} from 'react';
-import {ProjectCase} from "../../../UI/ProjectCase";
-import {SearchBar} from "../../../UI/SearchBar";
-import './../../../styles/Projects.css'
+import {ProjectCase} from "../../../../UI/ProjectCase";
+import {SearchBar} from "../../../../UI/SearchBar";
+import styles from './Projects.module.css'
 
-import PostService from "../../../../api/UserService";
+import PostService from "../../../../../api/UserService";
 /*import {Context} from "../index";*/
 
 /*
@@ -135,9 +135,9 @@ const Projects: FC = () => {
     }
     */
     return (
-        <main>
+        <main className={styles.main}>
             <SearchBar/>
-            <div className="projectsList">
+            <div className={styles.list}>
                 {projects.map(project =>
                     <ProjectCase
                         project={project}
@@ -149,4 +149,4 @@ const Projects: FC = () => {
     );
 };
 
-export default Projects;
+export {Projects};

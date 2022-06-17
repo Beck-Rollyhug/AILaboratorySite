@@ -1,9 +1,9 @@
-import '../../../styles/Profile.css'
+import styles from './Profile.module.css'
 
 import React, {FC} from 'react';
 import {Link, useParams} from "react-router-dom";
 
-import {ProjectCase} from "../../../UI/ProjectCase";
+import {ProjectCase} from "../../../../UI/ProjectCase";
 //import {AuthContext, UserContext} from "../../context";
 //import PostService from "../../api/UserService";
 
@@ -84,30 +84,44 @@ const Profile: FC = () => {
     }
     */
     return (
-        <div>
-            <section className="main-menu">
-                <div className="containerMenu">
-                    <div className="userProfile">
-                        <h1 className="name">{profile.full_name}</h1>
-                        <p>{profile.study_info.uni_name + ', ' +
-                        profile.study_info.study_program + ', ' +
-                        profile.study_info.study_year + ' курс , ' +
-                        profile.study_info.study_group}</p>
-                        <p>Почта: {profile.contacts.email}</p>
-                        <p>Телефон: {profile.contacts.phone_number}</p>
-                        <p>{profile.contacts.other_contact}</p>
-                        <Link className="btnn" to="/user/:id/profile_edit">Настроить</Link>
+        <main className={styles.main}>
+            <div className={styles.info}>
+                <div className={styles.general}>
+                    <div className={styles.name_study_box}>
+                        <h1 className={styles.name}>
+                            {profile.full_name}
+                        </h1>
+                        <p className={styles.uni}>
+                            {
+                                profile.study_info.uni_name + ', ' +
+                                profile.study_info.study_program + ', ' +
+                                profile.study_info.study_year + ' курс , ' +
+                                profile.study_info.study_group
+                            }
+                        </p>
                     </div>
-                    <h2 className="listFullProjects">Проекты</h2>
-                    <div className="projects-panel">
-                        {profile.projects.map(project =>
-                            <ProjectCase project={project} link={'/user/:id/project/:project_id'} key={project.id}/>
-                        )}
+                    <div className={styles.edit_button_box}>
+                        <Link className={styles.edit_button} to="/user/:id/profile_edit">
+                            Редактировать
+                        </Link>
                     </div>
                 </div>
-            </section>
-        </div>
+                <div className={styles.contacts_box}>
+                    <span className={styles.contact}>Почта: {profile.contacts.email}</span>
+                    <span className={styles.contact}>Телефон: {profile.contacts.phone_number}</span>
+                    <span className={styles.contact}>{profile.contacts.other_contact}</span>
+                </div>
+            </div>
+            <div className={styles.project}>
+                {profile.projects.map(project =>
+                    <ProjectCase
+                        project={project}
+                        link={'/user/:id/project/:project_id'}
+                        key={project.id}/>
+                )}
+            </div>
+        </main>
     );
 };
 
-export default Profile;
+export {Profile};

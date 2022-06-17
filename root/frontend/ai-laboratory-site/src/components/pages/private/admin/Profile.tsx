@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import {ProjectCase} from "../../../UI/ProjectCase";
-import '../../../styles/Profile.css'
+import '../user/profile/Profile.module.css'
 
 const profile = {
     full_name: 'Иванов Иван Иванович',
